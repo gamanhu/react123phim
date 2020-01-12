@@ -27,7 +27,7 @@ const showPage = routes => {
 function App() {
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       {/* <Navbar/> */}
       <Switch>
         {showPage(routesHome)}
