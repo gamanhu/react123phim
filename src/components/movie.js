@@ -1,0 +1,31 @@
+import React, { Component } from 'react';
+// import Slider from "react-slick";
+import {NavLink} from "react-router-dom";
+
+export default class Movie extends Component {
+
+    render() {
+        let { movie } = this.props;
+        return (
+            <div className="film__item">
+                <div className="film-thumbnail">
+                    <img src={movie.hinhAnh} alt="" />
+                    <div className="hoverInfo">
+                        <button className="playTrailer">
+                            <img src="./img/play-button.png" alt="" />
+                        </button>
+                    </div>
+                </div>
+                <div className="film-detail">
+                    <h2>{movie.tenPhim}</h2>
+                    <span>117 phút</span>
+                    <div className="hoverBtn">
+                        <NavLink to="" className="btnMua">
+                            MUA VÉ
+                        </NavLink>
+                    </div>
+                </div>
+            </div>
+        )
+    }
+}

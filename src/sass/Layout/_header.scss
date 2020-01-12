@@ -1,0 +1,84 @@
+.fake-header{
+    height: 60px;
+    background-color: #fff;
+    
+}
+.header{
+    box-shadow: 0 0 15px rgba(0,0,0,.3);
+    position:fixed;
+    z-index: 60;
+    width:100%;
+    .navbar{
+        background-color: rgba(255,255,255,.5);
+        .navbar-brand{
+            width: 50%;
+        }
+        .collapse{
+            .navbar-1{
+                padding-left: 0;
+                transform: translateX(-50%);
+                @media screen and  (max-width: 768px) {
+                    text-align: center;
+                    width: 100%;
+                    transform: translateX(0%);
+                } 
+                .nav-item{
+                    white-space: nowrap;
+                    .nav-link{
+                        color: $color-black-text;
+                        font-size: 14px;
+                        font-weight: 600 ;
+                        padding: 0 10px;
+                        margin: 0;
+                        &:hover{
+                            color: $color-orange-main;
+                        }
+                        
+                    }
+                }
+            }
+            .navbar-2{
+                .nav-item{
+                    position: relative;
+                    &:first-child::before{
+                        content: "";
+                        position: absolute;
+                        right: 0;
+                        top: 50%;
+                        width: 1px;
+                        height: 70%;
+                        transform: translateY(-50%);                    
+                        background: $color-grey-1;
+                    }
+                    .nav-link{
+                        color: $color-grey-1;
+                        font-size: 13px;
+                        white-space: nowrap;
+                        
+                        img{
+                            width: 30px;
+                            border-radius: 25px;
+                            margin-right: 5px;
+                        }
+                        .location-icon{
+                            opacity: .5;
+                            width: 10%;
+                        }
+                        .location-option{
+                            padding-right:20px;
+                            padding-top: 2%;
+                        }
+                        .dropdown-icon{
+                            width: 7%;
+                            height: auto;
+                        }
+    
+                    }
+    
+                }
+            }
+
+        }
+
+    }
+}
