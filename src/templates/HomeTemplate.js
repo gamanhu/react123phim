@@ -1,26 +1,29 @@
 import React from 'react'
 import Navbar from "../components/navbar";
-import {Route} from "react-router-dom";
-const HomeLayout= (props)=>{
+import { HashRouter, Route } from "react-router-dom";
+const HomeLayout = (props) => {
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             {props.children}
 
         </div>
     )
 }
-export default function HomeTemplate({Component, ...props}) {
+export default function HomeTemplate({ Component, ...props }) {
     return (
-        <Route
-            {...props}
-            render = {(propsComponent)=> {
-                return(
-                    <HomeLayout>
-                        <Component {...propsComponent}/>
-                    </HomeLayout>
-                );
-            }}
-        />
+        <HashRouter basename="/">
+            <Route
+                {...props}
+                render={(propsComponent) => {
+                    return (
+                        <HomeLayout>
+                            <Component {...propsComponent} />
+                        </HomeLayout>
+                    );
+                }}
+            />
+
+        </HashRouter>
     )
 }
