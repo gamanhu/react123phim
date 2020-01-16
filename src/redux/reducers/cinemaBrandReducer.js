@@ -5,6 +5,7 @@ let initialState = {
     brandName:"",
     listBranch: [],
     listMovieBrand: [],
+    listBranchHaveMovie:[]
     
 }
 
@@ -20,15 +21,20 @@ const cinemaBrandReducer = (state=initialState,action) => {
             return {...state};
         case ActionTypes.GET_LIST_BRANCH:
             if(action.listBranch){
-                console.log(action.listBranch);
+                // console.log(action.listBranch);
                 state.listBranch=action.listBranch;
                 state.brandName = action.brandName;
             }
             return{...state};
         case ActionTypes.GET_LIST_MOVIE_BRAND:
             if(action.listMovieBrand){
-                console.log(action.listMovieBrand)
+                // console.log(action.listMovieBrand)
                 state.listMovieBrand=action.listMovieBrand;
+                state.listBranchHaveMovie = state.listMovieBrand.map((item)=>{
+                    return item.lstCumRap.map((item2)=>{
+                        return item2.maCumRap
+                    })
+                })
             }
             return{...state};
     }
