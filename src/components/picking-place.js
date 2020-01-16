@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
 import * as action from "../redux/actions";
-import CinemaBranch from "./cinemaBranch";
+// import CinemaBranch from "./cinemaBranch";
 import SuatChieu from "./suatchieu";
 class PickingPlace extends Component {
     
@@ -13,15 +13,15 @@ class PickingPlace extends Component {
 
     }
     
-    renderBranch = (listBranch, brandName, listMovieBrand) => {
-        if (listBranch && listBranch.length > 0) {
-            return <CinemaBranch
-                listBranch={listBranch}
-                brandName={brandName}
-                listMovieBrand={listMovieBrand}
-            />
-        }
-    }
+    // renderBranch = (listBranch, brandName, listMovieBrand) => {
+    //     if (listBranch && listBranch.length > 0) {
+    //         return <CinemaBranch
+    //             listBranch={listBranch}
+    //             brandName={brandName}
+    //             listMovieBrand={listMovieBrand}
+    //         />
+    //     }
+    // }
     renderCinemaBrand = listCinemaBrand => {
         
 
