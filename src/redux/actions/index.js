@@ -1,5 +1,7 @@
 import * as ActionType from "../constants/action-types.js";
 import Axios from "axios";
+
+
 export const actGetListMovieAPI = () => {
     return dispatch => {
         Axios({
