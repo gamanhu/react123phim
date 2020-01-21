@@ -4,7 +4,7 @@ import * as action from "../redux/actions";
 // import CinemaBranch from "./cinemaBranch";
 import SuatChieu from "./suatchieu";
 class PickingPlace extends Component {
-    
+
     componentDidMount() {
 
         this.props.getListCinemaBrand();
@@ -12,7 +12,7 @@ class PickingPlace extends Component {
         this.props.getListMovieBrand("BHDStar", "GP01");
 
     }
-    
+
     // renderBranch = (listBranch, brandName, listMovieBrand) => {
     //     if (listBranch && listBranch.length > 0) {
     //         return <CinemaBranch
@@ -23,7 +23,7 @@ class PickingPlace extends Component {
     //     }
     // }
     renderCinemaBrand = listCinemaBrand => {
-        
+
 
         if (listCinemaBrand && listCinemaBrand.length > 0) {
             return listCinemaBrand.map((item, index) => {
@@ -52,7 +52,7 @@ class PickingPlace extends Component {
             return (
                 <li key={index} className="nav-item">
                     <a
-                        
+
                         className={`cinema-item nav-link ${index === 0 ? "active" : ""}`}
                         href={`#${branch.maCumRap}`}
                         data-toggle="pill"
@@ -73,13 +73,40 @@ class PickingPlace extends Component {
             )
         })
     }
-    renderListFilm = (listMovieBrand,listBranchHaveMovie) => {
-        
+    renderListFilm = (listMovieBrand, listBranchHaveMovie) => {
+
         // console.log(listBranchHaveMovie);
         // console.log(listMovieBrand);
-        return this.props.listBranch.map((item,index)=>{
-            return <SuatChieu key={index} listBranchHaveMovie={listBranchHaveMovie} active={(index===0?true:false)} maCumRap={item.maCumRap} listMovieBrand={listMovieBrand}/>
-        })
+
+        if (listBranchHaveMovie && listBranchHaveMovie.length > 0) {
+            return this.props.listBranch.map((item, index) => {
+                if (listBranchHaveMovie.includes(item.maCumRap)) {
+                    let indexArr = listBranchHaveMovie.indexOf(item.maCumRap);
+                    let {danhSachPhim} = listMovieBrand.lstCumRap[indexArr];
+                    return <SuatChieu
+                        key={index}
+                        isData={true}
+                        // listBranchHaveMovie={listBranchHaveMovie}
+                        danhSachPhim = {danhSachPhim}
+                        active={(index === 0 ? true : false)}
+                        maCumRap={item.maCumRap}
+                        // listMovieBrand={listMovieBrand}
+                    />
+
+                } else {
+                    return <SuatChieu
+                        key={index}
+                        isData={false}
+                        // listBranchHaveMovie={listBranchHaveMovie}
+                        
+                        active={(index === 0 ? true : false)}
+                        maCumRap={item.maCumRap}
+                        // listMovieBrand={listMovieBrand}
+                    />
+                }
+
+            })
+        }
         // return listMovieBrand.map((item, index) => {
         //     console.log(item);
         //     return item.lstCumRap.map((item2, index2) => {
@@ -108,12 +135,12 @@ class PickingPlace extends Component {
                             {this.renderHTMLBranch(this.props.listBranch)}
                         </ul>
                         <div className="list-movies tab-content">
-                            {this.renderListFilm(this.props.listMovieBrand,this.props.listBranchHaveMovie[0])}
+                            {this.renderListFilm(this.props.listMovieBrand[0], this.props.listBranchHaveMovie[0])}
                         </div>
                         <div className="clear" />
                     </div>
 
-                    
+
                 </div>
             </div>
         )
