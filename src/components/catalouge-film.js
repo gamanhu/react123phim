@@ -29,7 +29,7 @@ class CatalougeFilm extends Component {
         }
         return (
             <div className="selling-list container">
-                <PickingFast />
+                <PickingFast listMovie={this.props.listMovie} />
                 <ul className="nav nav-pills">
                     <li className="nav-item">
                         <a className="nav-link active" data-toggle="pill" href="#onSelling">

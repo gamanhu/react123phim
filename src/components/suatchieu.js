@@ -1,5 +1,5 @@
-import React from 'react';
-
+import React, {useEffect} from 'react';
+import {NavLink} from "react-router-dom";
 // import { connect } from "react-redux";
 export default function SuatChieu(props) {
 
@@ -14,6 +14,13 @@ export default function SuatChieu(props) {
     //         }
     //     })
     // }
+
+    useEffect(()=>{
+        return ()=>{
+            const booking = `booking/1234`;
+            console.log(booking);
+        }
+    },[])
     const renderNgayChieu = (lichChieu, datelist) => {
         if (lichChieu.lstLichChieuTheoPhim && lichChieu.lstLichChieuTheoPhim.length > 0) {
             return datelist.map((ngay,index2) => {
@@ -26,9 +33,9 @@ export default function SuatChieu(props) {
                                 if (ngay === (new Date(item.ngayChieuGioChieu).toLocaleDateString())) {
 
                                     return (
-                                        <a key={index} href="/">
+                                        <NavLink key={index} to="/booking/1234">
                                             <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
-                                        </a>
+                                        </NavLink>
                                     )
                                 }
                             })
