@@ -54,7 +54,26 @@
                         color: $color-grey-1;
                         font-size: 13px;
                         white-space: nowrap;
-                        
+                        position: relative;
+                        &:hover{
+                            .logout{
+                                display:block;
+                            }
+                        }
+                        .logout{
+                            display:none;
+                            position: absolute;
+                            left:5px;
+                            bottom:-25px;
+                            background-color: gray;
+                            color: white;
+                            padding: 5px 10px;
+                            border-radius: 4px;
+                        }
+                        .signin__btn{
+                            color: $color-grey-1;
+                            text-decoration: none;
+                        }
                         img{
                             width: 30px;
                             border-radius: 25px;

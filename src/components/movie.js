@@ -1,11 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 // import Slider from "react-slick";
 import {NavLink} from "react-router-dom";
 
-export default class Movie extends Component {
+export default function Movie(props) {
 
-    render() {
-        let { movie } = this.props;
+    let { movie } = props;
         return (
             <div className="film__item">
                 <div className="film-thumbnail">
@@ -27,5 +26,4 @@ export default class Movie extends Component {
                 </div>
             </div>
         )
-    }
 }

@@ -38,6 +38,8 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     padding-right: 20px;
+                    -webkit-appearance: none;
+                    outline:none;
                     &::before{
                         content: '';
                         position: absolute;
@@ -75,6 +77,8 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     padding-right: 20px;
+                    -webkit-appearance: none;
+                    outline:none;
                     &::before{
                         content: '';
                         position: absolute;
@@ -111,6 +115,8 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     padding-right: 20px;
+                    -webkit-appearance: none;
+                    outline:none;
                     ::before{
                         content: '';
                         position: absolute;
@@ -146,6 +152,10 @@
                     text-overflow: ellipsis;
                     white-space: nowrap;
                     padding-right: 20px;
+                    -webkit-appearance: none;
+                    outline:none;
+                    // height: 200px;
+                    // overflow-y: scroll;
                     &::before{
                         content: '';
                         position: absolute;

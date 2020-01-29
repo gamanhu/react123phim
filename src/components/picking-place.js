@@ -6,9 +6,11 @@ import SuatChieu from "./suatchieu";
 class PickingPlace extends Component {
 
     componentDidMount() {
-
+        // Get API LaythongtinHeThongRap (BHD,CGV,CineStar,...)
         this.props.getListCinemaBrand();
+        // Get API LaythongtinCUmRaptheoHeThong (BHD 3/2,BHD Tower,...)
         this.props.getListBranch("BHDStar");
+        // Get API Laythongtinlichchieutheohethongrap
         this.props.getListMovieBrand("BHDStar", "GP01");
 
     }
@@ -23,8 +25,10 @@ class PickingPlace extends Component {
     //     }
     // }
     renderCinemaBrand = listCinemaBrand => {
-
-
+        // Render the List of Cinema Brand: CGV, BHD, CineStar, Galaxy, etc...
+        // Nav of bootstrap
+        // Content of Nav is
+        
         if (listCinemaBrand && listCinemaBrand.length > 0) {
             return listCinemaBrand.map((item, index) => {
                 return (

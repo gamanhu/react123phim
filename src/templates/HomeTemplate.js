@@ -4,7 +4,7 @@ import { Route } from "react-router-dom";
 const HomeLayout = (props) => {
     return (
         <div>
-            <Navbar />
+            
             {props.children}
 
         </div>
@@ -18,6 +18,7 @@ export default function HomeTemplate({ Component, ...props }) {
             render={(propsComponent) => {
                 return (
                     <HomeLayout>
+                        <Navbar />
                         <Component {...propsComponent} />
                     </HomeLayout>
                 );

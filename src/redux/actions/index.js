@@ -76,3 +76,33 @@ export const actGetListMovieBrandAPI= (maHeThongRap,maNhom)=>{
         })
     }
 }
+
+export const actLoginUser = (user,history) => {
+    console.log(user);
+    return dispatch =>  {
+        Axios({
+            method:"POST",
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
+            data:user
+        })
+        .then(result=>{
+            if(result.data.maLoaiNguoiDung === "KhachHang"){
+                alert("Login thanh cong");
+                console.log(history);
+                // Phai lam no chuyen huong sang trang dashboard/ phai xai history.push nhung chi duoc xai trong cai component thoi
+                history.push("/");
+                
+                dispatch({
+                    type:ActionType.USER_LOGIN_SUCCESS,
+                    userInfo:result.data
+                });
+            } else{
+                alert("Bạn phải sử dụng tài khoản khách hàng để đặt vé");
+            }
+        })
+        .catch(err=>{
+            alert(err.response.data);
+        })
+    }
+
+}
