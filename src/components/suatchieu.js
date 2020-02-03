@@ -1,15 +1,16 @@
 import React, {useEffect} from 'react';
 import {NavLink} from "react-router-dom";
-// import { connect } from "react-redux";
-export default function SuatChieu(props) {
+import * as action from "../redux/actions";
+import { connect } from "react-redux";
+ function SuatChieu(props) {
 
     // const renderGioChieu = (lichChieu, ngay) => {
     //     return lichChieu.lstLichChieuTheoPhim.map((item, index) => {
     //         if (ngay === (new Date(item.ngayChieuGioChieu).toLocaleDateString())) {
     //             return (
-    //                 <a key={index} href="/">
+    //                 <NavLink key={index} href="/">
     //                     <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
-    //                 </a>
+    //                 </NavLink>
     //             )
     //         }
     //     })
@@ -21,8 +22,10 @@ export default function SuatChieu(props) {
             console.log(booking);
         }
     },[])
+    
     const renderNgayChieu = (lichChieu, datelist) => {
         if (lichChieu.lstLichChieuTheoPhim && lichChieu.lstLichChieuTheoPhim.length > 0) {
+            
             return datelist.map((ngay,index2) => {
                 return (
                     <div key={index2} className="start-time">
@@ -33,7 +36,10 @@ export default function SuatChieu(props) {
                                 if (ngay === (new Date(item.ngayChieuGioChieu).toLocaleDateString())) {
 
                                     return (
-                                        <NavLink key={index} to="/booking/1234">
+                                        <NavLink 
+                                        key={index} 
+                                        to={`/booking/${item.maLichChieu}`} 
+                                        onClick={()=>props.getBoothInfo(item.maLichChieu)} >
                                             <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
                                         </NavLink>
                                     )
@@ -87,101 +93,23 @@ export default function SuatChieu(props) {
         return (
             <div className={`tab-pane fade ${(props.active ? "active show" : "")}`} id={`${props.maCumRap}`}>
                 {renderPhimChieu()}
-                {/* <div className="movie-item">
-                    <div className="movie-detail">
-                        <img
-                            src="./img/cgv-cresentmall.jpg"
-                            width="50px"
-                            alt="cgv-cresenmall"
-                        />
-                        <div className="movie-item__detail">
-                            <h5>CGV - Cresent Mall</h5>
-                            <p>Địa chỉ</p>
-                        </div>
-                    </div>
-                    <div className="start-time">
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <div className="clear" />
-                    </div>
-                </div>
-                <div className="movie-item">
-                    <div className="movie-detail">
-                        <img
-                            src="./img/cgv-cresentmall.jpg"
-                            width="50px"
-                            alt="cgv-cresenmall"
-                        />
-                        <div className="movie-item__detail">
-                            <h5>CGV - Cresent Mall</h5>
-                            <p>Địa chỉ</p>
-                        </div>
-                    </div>
-                    <div className="start-time d-block">
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <a href="/">
-                            <span>10:30</span>~12:27
-                                </a>
-                        <div className="clear" />
-                    </div>
-                </div> */}
             </div>
         )
     } else {
-
         return (
             <div className={`tab-pane fade ${(props.active ? "active show" : "")}`} id={`${props.maCumRap}`} >
                 <h2>Không có suất chiếu nào</h2>
             </div>
         )
     }
-    // } 
-    // else {
-    //     return(
-    //         <div></div>
-    //     )
-    // }
+    
 
 }
+const mapDispatchToProps = dispatch => {
+    return{
+        getBoothInfo : (maLichChieu) => {
+            dispatch(action.actGetBoothInfoAPI(maLichChieu));
+        }
+    }
+};
+export default connect(null,mapDispatchToProps)(SuatChieu);
