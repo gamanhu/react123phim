@@ -39,6 +39,8 @@ export const actGetListCinemaBrandAPI = () => {
             })
     }
 }
+
+//Lay list cac chi nhanh cua he thong rap
 export const actGetListBranchAPI = (maHeThongRap) => {
     return dispatch => {
         Axios({
@@ -57,7 +59,7 @@ export const actGetListBranchAPI = (maHeThongRap) => {
         })
     }
 }
-
+// Lay Thong Tin Lich Chieu Theo He Thong Rap
 export const actGetListMovieBrandAPI= (maHeThongRap,maNhom)=>{
     return dispatch => {
         Axios({
@@ -76,7 +78,7 @@ export const actGetListMovieBrandAPI= (maHeThongRap,maNhom)=>{
         })
     }
 }
-
+//Login cho user
 export const actLoginUser = (user,history) => {
     console.log(user);
     return dispatch =>  {
@@ -105,4 +107,27 @@ export const actLoginUser = (user,history) => {
         })
     }
 
+}
+
+export const actGetBoothInfoAPI = (maLichChieu)=>{
+    return dispatch =>{
+        Axios({
+            method:"GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+        })
+        .then(result=>{
+            if(result.data){
+                console.log(result.data);
+                dispatch({
+                    type:ActionType.GET_BOOTH_INFO,
+                    thongTinPhim: result.data.thongTinPhim,
+                    danhSachGhe:result.data.danhSachGhe,
+                })
+                // history.push("/booking/maLichChieu");
+            };
+        })
+        .catch(err=>{
+            console.log(err);
+        });
+    }
 }

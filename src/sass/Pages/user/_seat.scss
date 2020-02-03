@@ -1,0 +1,91 @@
+.seat__map {
+    .top__content {
+      .logo-cinema {
+        float: left;
+        width: 70px;
+        margin-right: 13px;
+        img {
+          width: 70px;
+        }
+      }
+      .content-cinema {
+        float: left;
+        p {
+          font-size: 20px;
+          line-height: 75px;
+        }
+      }
+    }
+    .screen__img {
+      img {
+        width: 100%;
+      }
+    }
+    .seats__position {
+      // height: 400px;
+      text-align: center;
+      
+      .seat__row{
+        .row__name{
+          display: inline-block;
+          margin-right: 20px;
+          font-size: 13px;
+          font-weight: 600;
+          width: 20px;
+        }
+        .seat__place{
+          display: inline-block;
+          position: relative;
+          cursor: pointer;
+          svg{
+            width: 25px;
+            margin-right: 10px;
+          }
+          .seat__number{
+            display: none;
+            font-size: 13px;
+            position: absolute;
+            top:46%;
+            left:35%;
+            font-weight: 600;
+            transform: translate(-50%,-50%);
+            &.active{
+              display:block;
+            }
+          }
+
+        }
+      }
+    }
+    .note-seat {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+
+      .seat__type {
+        margin-right: 21px;
+        display: inline-block;
+        padding:3px;
+        text-align: center;
+        // position:relative;
+        svg{
+            display: block;
+            width:20px;
+            margin: 0 auto;
+            
+        }
+        span{
+            text-align: center;
+            font-size: 13px;
+            font-weight: 500;
+            
+        }
+        
+      }
+    }
+  }
+  
+  .clear {
+    clear: both;
+  }
+  
