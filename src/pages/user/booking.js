@@ -4,6 +4,7 @@ import cgvImg from "../../img/cgv.png";
 import avatarImg from "../../img/avatar.png";
 import SeatIcon from "../../components/seat-icon";
 import SeatDistribute from "../../components/seat-distribute";
+import BookingInfo from "../../components/booking-info";
 import {connect} from 'react-redux';
 
 function Booking(props) {
@@ -141,9 +142,7 @@ function Booking(props) {
                     </div>
                 </div>
             </div>
-            <div className="right__content">
-                {/* <button className="btn btn-success" onClick={()=>handlePick(state.isPick)}>isPick</button> */}
-            </div>
+            <BookingInfo/>
         </div>
     )
 }
