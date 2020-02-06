@@ -15,13 +15,13 @@ let initialState= {
 };
 
 const initial = (state=initialState)=>{
-    console.log(state);
+    // console.log(state);
     if(localStorage.getItem("UserLogin")){
         state.isLogin=true;
         state.userInfo = JSON.parse(localStorage.getItem("UserLogin"));
         return {...state};
     }
-    console.log(state);
+    // console.log(state);
 }
 initial();
 const userReducer = (state = initialState, action)=> {

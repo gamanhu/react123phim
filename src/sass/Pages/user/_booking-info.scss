@@ -61,10 +61,15 @@
             padding-bottom: 12.5px;
             padding-top: 12.5px;
             margin-bottom: 12.5px;
+            .seat__picked{
+                font-size: 14px;
+                font-weight: 600;
+            }
             .total__picked{
                 text-align: right;
                 color: #44c020;
                 font-size: 14px;
+                font-weight:600;
             }
         }
         .user__email{

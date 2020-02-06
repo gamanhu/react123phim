@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import screenImg from "../../img/screen-img.png";
 import cgvImg from "../../img/cgv.png";
 import avatarImg from "../../img/avatar.png";
@@ -10,10 +10,10 @@ import {connect} from 'react-redux';
 function Booking(props) {
     const abcstr= "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
     const alphabetOrder = abcstr.split('');
-    const [state,setState] = useState({
-        isChoose: false,
-        // isPick: true,
-    })
+    // const [state,setState] = useState({
+    //     isChoose: false,
+    //     // isPick: true,
+    // })
     // const alphabetOrder = ['A','B','C','D','E','F','G','H','I','K','L','M']
     // const handleOnClick = (isChoose) => {
     //     setState({
@@ -27,6 +27,7 @@ function Booking(props) {
     //         isPick:!isPick,
     //     })
     // }
+   
     const chunkify = (a, n, balanced) => {
         if (n < 2)
             return [a];
@@ -66,14 +67,14 @@ function Booking(props) {
         return out;
     }
     const renderGhe = (danhSachGhe) => {
-        console.log(danhSachGhe);
+        // console.log(danhSachGhe);
         if(danhSachGhe && danhSachGhe.length>0){
             let seatRow = chunkify(danhSachGhe,10,9);
             return seatRow.map((item,index)=>{
                 return(
                     <div key={index} className="seat__row">
                         <span className="row__name">{alphabetOrder[index]}</span> 
-                        {renderRow(item)}
+                        {renderRow(item,alphabetOrder[index])}
                     </div>
                 )
             })
@@ -90,10 +91,10 @@ function Booking(props) {
             // })
         }
     }
-    const renderRow = (hangGhe) =>{
-        if(hangGhe){
-            return hangGhe.map((item,index)=>{
-                return <SeatDistribute key={index} seatInfo={item} seatNum = {index}/>
+    const renderRow = (seatRow,seatRowName) =>{
+        if(seatRow){
+            return seatRow.map((item,index)=>{
+                return <SeatDistribute key={index} seatInfo={item} seatNum = {index} seatRowName={seatRowName}/>
             })
         }
     }
@@ -132,12 +133,16 @@ function Booking(props) {
                     </div>
                     <div className="note-seat">
                         <div className={`seat__type }`}>
-                           <SeatIcon type={"Thuong"} state={state}/>
+                           <SeatIcon type={"Thuong"} state={{isChoose:false}}/>
                             <span>Ghế Thường</span>
                         </div>
                         <div className={`seat__type }`}>
-                           <SeatIcon type={"Vip"} state={state}/>
+                           <SeatIcon type={"Vip"} state={{isChoose:false}}/>
                             <span>Ghế Vip</span>
+                        </div>
+                        <div className={`seat__type }`}>
+                           <SeatIcon type={"Vip"} state={{isChoose:false,isBook:true}}/>
+                            <span>Ghế Da duoc dat</span>
                         </div>
                     </div>
                 </div>
@@ -150,7 +155,7 @@ function Booking(props) {
 const mapStateToProps = state => {
     return {
         danhSachGhe : state.bookingReducer.danhSachGhe,
-        thongTinPhim: state.bookingReducer.thongTinPhim
+        thongTinPhim: state.bookingReducer.thongTinPhim,
     }
 }
 export default connect(mapStateToProps,null)(Booking);
