@@ -1,11 +1,37 @@
-import React from 'react'
+import React,{useEffect} from 'react';
 import noticeImg from "../img/exclamation.png";
-export default function BookingInfo() {
+import { connect } from 'react-redux';
+
+
+function BookingInfo(props) {
+    // const [state,setState] = useState(props);
+    const renderGheKhachChon = (gheKhachChon) => {
+        if (gheKhachChon && gheKhachChon.length > 0) {
+            gheKhachChon = gheKhachChon.sort((a,b)=> a.seatInfo.stt-b.seatInfo.stt);
+            return gheKhachChon.map((item, index) => {
+                return (
+                    <span key={index}>{` ${item.seatName} `}</span>
+                )
+            })
+        }
+    }
+    const renderTienGhe = gheKhachChon => {
+        let total = 0;
+        if(gheKhachChon && gheKhachChon.length>0){
+            total = gheKhachChon.reduce((acc,cur)=>(acc+cur.seatInfo.giaVe),0);
+        } 
+        return Number((total).toFixed(0)).toLocaleString();
+    }
+    
+    useEffect(()=>{
+    
+    },[props])
+
     return (
         <div className="right__content">
             <div className="booking-info__content">
                 <div className="row total">
-                    <p className="cash">0 đ</p>
+                    <span className="cash">{renderTienGhe(props.gheKhachChon)}đ</span>
                 </div>
                 <div className="row filmname">
                     <span>Gái Già Lắm Chiêu 3</span>
@@ -19,9 +45,10 @@ export default function BookingInfo() {
                 </div>
                 <div className="row seat__name">
                     <div className="seat__picked col-sm-7">
-                        <span style={{ color: "#fb4226" }}>Ghế</span>
+                        <span style={{ color: "#fb4226" }}>Ghế
+                        {renderGheKhachChon(props.gheKhachChon)}</span>
                     </div>
-                    <div className="total__picked col-sm-5">0 đ</div>
+                    <div className="total__picked col-sm-5">{renderTienGhe(props.gheKhachChon)} đ</div>
                 </div>
                 <div className="row user__email">
                     <p className="label">E-mail</p>
@@ -44,7 +71,15 @@ export default function BookingInfo() {
                     <span style={{ color: "#f79320" }}>Email </span> đã nhập.
                 </span>
             </div>
-            <div className="buyticket">Đặt Vé</div>
+            <div className="buyticket" disabled onClick={()=>{}}>Đặt Vé</div>
         </div>
     )
-}
+};
+const mapStateToProps = (state) => {
+    return {
+        gheKhachChon: state.bookingReducer.gheKhachChon,
+        iloveyou:state.bookingReducer.iloveyou
+    };
+};
+
+export default connect(mapStateToProps, null)(BookingInfo);

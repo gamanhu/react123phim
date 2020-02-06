@@ -7,6 +7,6 @@ const rootReducer = combineReducers({
     movieReducer, //movieReducer:movieReducer
     cinemaBrandReducer,
     userReducer,
-    bookingReducer
+    bookingReducer,
 });
 export default rootReducer;
