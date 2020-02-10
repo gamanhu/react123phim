@@ -17,7 +17,7 @@ class CatalougeFilm extends Component {
     };
     shiftItem = (arr, item) => {
         for (let i = 0; i < item; i++) {
-            arr.shift()
+            arr.shift();
         }
     };
     render() {

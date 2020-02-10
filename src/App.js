@@ -18,14 +18,12 @@ const showPage = routes => {
         exact = {item.exact} 
         Component = {item.component}
         />
-
       )
     })
   }
 }
 
 function App() {
-
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       {/* <Navbar/> */}

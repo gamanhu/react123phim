@@ -3,9 +3,10 @@ import React, { Component } from 'react';
 import {NavLink} from "react-router-dom";
 
 export default class Movie extends Component {
-
+    
     render() {
         let { movie } = this.props;
+        let id = movie.maPhim;
         return (
             <div className="film__item">
                 <div className="film-thumbnail">
@@ -20,7 +21,7 @@ export default class Movie extends Component {
                     <h2>{movie.tenPhim}</h2>
                     <span>117 phút</span>
                     <div className="hoverBtn">
-                        <NavLink to="" className="btnMua">
+                        <NavLink to={`/detail-movie/${id}`} className="btnMua">
                             MUA VÉ
                         </NavLink>
                     </div>

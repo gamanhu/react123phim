@@ -6,7 +6,6 @@ const HomeLayout = (props) => {
         <div>
             <Navbar />
             {props.children}
-
         </div>
     )
 }

@@ -74,3 +74,43 @@ export const actGetListMovieBrandAPI= (maHeThongRap,maNhom)=>{
         })
     }
 }
+
+//Lay 1 bo phim bang id
+export const actGetDetailMovie= (id)=>{
+    return dispatch => {
+        Axios({
+            method:"GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
+        })
+        .then(result=>{
+            console.log(result);
+            dispatch({
+                type:ActionType.GET_DETAIL_MOVIE,
+                movie : result.data
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
+
+//Lay lich danh sach rap
+export const actGetShowTimes= (maHeThongRap)=>{
+    return dispatch => {
+        Axios({
+            method:"GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+        })
+        .then(result=>{
+            console.log(result);
+            dispatch({
+                type:ActionType.GET_CINEMA,
+                danhSachCacRap : result.data
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
