@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React,{useEffect} from 'react';
 import {NavLink} from "react-router-dom";
 import * as action from "../redux/actions";
 import { connect } from "react-redux";
@@ -15,13 +15,13 @@ import { connect } from "react-redux";
     //         }
     //     })
     // }
-
     useEffect(()=>{
-        return ()=>{
-            const booking = `booking/1234`;
-            console.log(booking);
-        }
-    },[])
+        props.setBookingSuccess();
+    },[props])
+    const handleOnClick = (maLichChieu)=>{
+        props.getBoothInfo(maLichChieu);
+        // props.setBookingSuccess();
+    }
     
     const renderNgayChieu = (lichChieu, datelist) => {
         if (lichChieu.lstLichChieuTheoPhim && lichChieu.lstLichChieuTheoPhim.length > 0) {
@@ -39,7 +39,7 @@ import { connect } from "react-redux";
                                         <NavLink 
                                         key={index} 
                                         to={`/booking/${item.maLichChieu}`} 
-                                        onClick={()=>props.getBoothInfo(item.maLichChieu)} >
+                                        onClick={()=>handleOnClick(item.maLichChieu)} >
                                             <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
                                         </NavLink>
                                     )
@@ -109,6 +109,11 @@ const mapDispatchToProps = dispatch => {
     return{
         getBoothInfo : (maLichChieu) => {
             dispatch(action.actGetBoothInfoAPI(maLichChieu));
+        },
+        setBookingSuccess: ()=>{
+            dispatch({
+                type:"FALSE_BOOKING",
+            })
         }
     }
 };

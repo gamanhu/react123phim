@@ -46,7 +46,7 @@ class CatalougeFilm extends Component {
                 <div className="tab-content">
                     {/* // dang chieu list */}
                     <div className="tab-pane container active" id="onSelling">
-                        <Slider {...settings} className="carousel-film">
+                        <Slider {...settings} className="carousel-film" style={{"transform":"none!important"}}>
                             {this.renderHTML()}
                         </Slider>
                     </div>
