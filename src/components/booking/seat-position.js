@@ -1,5 +1,5 @@
 import React from 'react';
-import SeatDistribute from "../components/seat-distribute";
+import SeatDistribute from "./seat-distribute";
 
 export default function SeatPosition(props) {
 

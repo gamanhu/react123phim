@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import SeatPosition from "./seat-position";
-import BookingNavbar from "../components/booking-navbar";
+import BookingNavbar from "./booking-navbar";
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import IsLoading from "./is-loading";
-import * as action from "../redux/actions";
-import screenImg from "../img/screen-img.png";
-import cgvImg from "../img/cgv.png";
-import SeatIcon from "../components/seat-icon";
+import * as action from "../../redux/actions";
+import screenImg from "../..//img/screen-img.png";
+import cgvImg from "../../img/cgv.png";
+import SeatIcon from "./seat-icon";
 function LeftBooking(props) {
     const [state, setState] = useState({
         isLoading: true,

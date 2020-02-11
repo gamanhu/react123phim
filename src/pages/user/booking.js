@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
-import RightBooking from "../../components/right-booking";
-import LeftBooking from "../../components/left-booking";
+import RightBooking from "../../components/booking/right-booking";
+import LeftBooking from "../../components/booking/left-booking";
 // import {connect} from "react-redux";
 // import * as action from "../../redux/actions";
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
-import noticeImg from "../img/exclamation.png";
+import noticeImg from "../../img/exclamation.png";
 import { connect } from 'react-redux';
-import * as action from "../redux/actions";
+import * as action from "../../redux/actions";
 
 
 function RightBooking(props) {

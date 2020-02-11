@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import SeatIcon from "./seat-icon";
 import {connect} from "react-redux";
 // import * as action from "../redux/actions";
-import * as ActionType from "../redux/constants/action-types";
+import * as ActionType from "../../redux/constants/action-types";
 function SeatDistribute(props) {
     const [state,setState] = useState({
         isChoose:false,

@@ -1,5 +1,5 @@
 import React from 'react';
-import avatarImg from "../img/avatar.png";
+import avatarImg from "../../img/avatar.png";
 
 export default function BookingNavbar(props) {
     return (
