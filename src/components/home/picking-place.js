@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import * as action from "../redux/actions";
+import * as action from "../../redux/actions";
 // import CinemaBranch from "./cinemaBranch";
 import SuatChieu from "./suatchieu";
 class PickingPlace extends Component {

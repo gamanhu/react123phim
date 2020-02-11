@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import {NavLink} from "react-router-dom";
-import * as action from "../redux/actions";
+import * as action from "../../redux/actions";
 import { connect } from "react-redux";
  function SuatChieu(props) {
 

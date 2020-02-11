@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Slider from 'react-slick';
 import PickingFast from "./picking-fast";
 import { connect } from "react-redux";
-import { actGetListMovieAPI } from "../redux/actions/index.js";
-import Movie from "./movie.js";
+import { actGetListMovieAPI } from "../../redux/actions/index.js";
+import Movie from "./movie";
 
 class CatalougeFilm extends Component {
     componentDidMount() {

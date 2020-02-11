@@ -184,3 +184,32 @@ export const actDatVeAPI = (thongTinDatVe)=> {
     }
 }
 
+export const actLoginAdmin = (user,history) => {
+    return dispatch =>  {
+        Axios({
+            method:"POST",
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
+            data:user
+        })
+        .then(result=>{
+            if(result.data.maLoaiNguoiDung === "QuanTri"){
+                alert("Login thanh cong");
+                console.log(history);
+                localStorage.setItem("AdminLogin", JSON.stringify(result.data));
+                // Phai lam no chuyen huong sang trang dashboard/ phai xai history.push nhung chi duoc xai trong cai component thoi
+                history.push('/dashboard');
+                
+                dispatch({
+                    type:ActionType.ADMIN_LOGIN_SUCCESS,
+                    adminInfo:result.data
+                });
+            } else{
+                alert("Bạn phải sử dụng tài khoản quản trị viên để đặt vé");
+            }
+        })
+        .catch(err=>{
+            alert(err);
+        })
+    }
+}
+

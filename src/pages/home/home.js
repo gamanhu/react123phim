@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Carousel from "../../components/carousel";
-import CatalougeFilm from "../../components/catalouge-film";
-import PickingPlace from "../../components/picking-place";
+import Carousel from "../../components/home/carousel";
+import CatalougeFilm from "../../components/home/catalouge-film";
+import PickingPlace from "../../components/home/picking-place";
 export default class Home extends Component {
     render() {
         return (

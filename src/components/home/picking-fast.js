@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import WithSelect from './with-select';
+import WithSelect from '../with-select';
 import {connect} from "react-redux";
 // import { NavLink } from "react-router-dom";
 export default function PickingFast(props) {
