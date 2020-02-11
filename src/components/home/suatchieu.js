@@ -31,20 +31,20 @@ import { connect } from "react-redux";
                     <div key={index2} className="start-time">
                         <p>Ngày: {ngay}</p>
                         {/* {renderGioChieu(lichChieu,ngay)} */}
-                        {
-                            lichChieu.lstLichChieuTheoPhim.map((item, index) => {
-                                if (ngay === (new Date(item.ngayChieuGioChieu).toLocaleDateString())) {
-
-                                    return (
-                                        <NavLink 
-                                        key={index} 
-                                        to={`/booking/${item.maLichChieu}`} 
-                                        onClick={()=>handleOnClick(item.maLichChieu)} >
-                                            <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
-                                        </NavLink>
-                                    )
-                                }
-                            })
+                        {   
+                                lichChieu.lstLichChieuTheoPhim.map((item, index) => {
+                                    if (ngay === (new Date(item.ngayChieuGioChieu).toLocaleDateString())) {
+    
+                                        return (
+                                            <NavLink 
+                                            key={index} 
+                                            to={`/booking/${item.maLichChieu}`} 
+                                            onClick={()=>handleOnClick(item.maLichChieu)} >
+                                                <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
+                                            </NavLink>
+                                        )
+                                    }
+                                })
                         }
                         <div className="clear" />
                     </div>

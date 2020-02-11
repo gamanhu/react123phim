@@ -4,7 +4,7 @@ import BookingNavbar from "./booking-navbar";
 import { NavLink } from "react-router-dom";
 import { connect } from 'react-redux';
 import IsLoading from "./is-loading";
-import * as action from "../../redux/actions";
+// import * as action from "../../redux/actions";
 import screenImg from "../..//img/screen-img.png";
 import cgvImg from "../../img/cgv.png";
 import SeatIcon from "./seat-icon";

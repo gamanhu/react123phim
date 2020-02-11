@@ -11,6 +11,7 @@ let initialState = {
         accessToken: ""
     },
     isLogin: false,
+    isLoginAdmin: false,
 
 };
 
@@ -22,7 +23,7 @@ const initial = (state = initialState) => {
         return { ...state };
     }
     if (localStorage.getItem("AdminLogin")) {
-        state.isLogin = false;
+        state.isLoginAdmim = true;
         state.userInfo = JSON.parse(localStorage.getItem("AdminLogin"));
         return { ...state };
     }
@@ -44,7 +45,7 @@ const userReducer = (state = initialState, action) => {
             return { ...state };
         case ActionTypes.ADMIN_LOGIN_SUCCESS:
             state.userInfo = action.adminInfo;
-            state.isLogin = false;
+            state.isLoginAdmin = true;
             localStorage.setItem("AdminLogin", JSON.stringify(action.adminInfo));
             return { ...state };
         default:
