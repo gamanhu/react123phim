@@ -27,7 +27,7 @@ function LoginAdmin(props) {
     useEffect(() => {
         console.log(props.history);
 
-    }, []);
+    }, [props]);
 
 
     return (

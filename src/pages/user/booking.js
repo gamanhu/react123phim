@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import RightBooking from "../../components/booking/right-booking";
 import LeftBooking from "../../components/booking/left-booking";
 // import {connect} from "react-redux";
@@ -6,7 +6,7 @@ import LeftBooking from "../../components/booking/left-booking";
 
 export default function Booking(props) {
     // console.log(props.history.location.pathname.split("/")[2]);
-    // useEffect(()=>{
+    // React.useEffect(()=>{
     //     let pathName = Number(props.history.location.pathname.split("/")[2]);
     //     console.log(props);
     //     props.actGetBoothInfo(pathName);

@@ -2,78 +2,26 @@ import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
+import Container from '@material-ui/core/Container';
 // import CssBaseline from '@material-ui/core/CssBaseline';
 import Drawer from '@material-ui/core/Drawer';
-// import Box from '@material-ui/core/Box';
-// // import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import List from '@material-ui/core/List';
 import Typography from '@material-ui/core/Typography';
 import Divider from '@material-ui/core/Divider';
 import IconButton from '@material-ui/core/IconButton';
-import Badge from '@material-ui/core/Badge'; // cái hình tròn có sẵn border-radius
-// import Container from '@material-ui/core/Container';
-// import Grid from '@material-ui/core/Grid';
-// import Paper from '@material-ui/core/Paper';
-// import Link from '@material-ui/core/Link';
+import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-
-// import Dashboard2 from "../../components/dashboard/Dashboard"
+import ThongKe from "../../components/dashboard/thongke";
 import { connect } from "react-redux";
-
-// const useStyles = makeStyles(theme => {
-//     console.log(theme);
-//     return ({
-//         'left-navbar': {
-//             background: 'linear-gradient(0deg,#614385, #516395 )',
-//             height: "100vh",
-//             width: "20%",
-//             boxShadow: '0 0 15px rgba(0,0,0,.3);',
-//             position: 'fixed'
-//         },
-//         dashBoard: {
-//             color: 'white',
-//             padding: '20px'
-
-//         },
-//         userInfo: {
-//             textAlign: 'center',
-//             // margin: '20px 20px'
-//             borderBottom: '1px dashed #e9e9e9',
-//         },
-//         avatarImg: {
-//             width: '50px',
-//             borderRadius: '30px',
-//             marginRight: '5px',
-//             marginBottom: '5px',
-//             zIndex: '1000'
-//         },
-//         userInfo: {
-//             textAlign: 'center',
-//             // margin: '20px 20px'
-//             borderBottom: '1px dashed #e9e9e9',
-//         },
-//         manageBox: {
-//             padding: '10px 0',
-//             display: 'flex',
-//             justifyContent: 'center',
-//             borderBottom: '1px solid #e9e9e9',
-//         },
-//         boxTitle: {
-//             marginBottom: '0',
-//             color: '#e9e9e9'
-//         }
-
-//     })
-// }
-// )
+import {ListFunction,listFunction} from "../../components/dashboard/listfunction";
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => {
     console.log(theme);
     return ({
-        content: {
+        content1: {
             display: 'flex',
         },
         appBar: {
@@ -93,7 +41,7 @@ const useStyles = makeStyles(theme => {
         },
         toolbar: {
             paddingRight: 24, // keep right padding when drawer closed
-            background: 'linear-gradient(270deg,#614385, #516395 )'
+            background: 'linear-gradient(300deg, #d4fc79 0%, #96e6a1 100%)',
         },
         menuButton: {
             marginRight: 36,
@@ -105,8 +53,11 @@ const useStyles = makeStyles(theme => {
             flexGrow: 1,
         },
         drawerPaper: {
-            position: 'relative',
+            position: 'relative', //must have relative position to not being overlay the right content
             whiteSpace: 'nowrap',
+            background: 'linear-gradient(0deg, #d4fc79 0%, #96e6a1 100%)',
+            height: '100vh',
+            // background-image: linear-gradient(120deg, #a1c4fd 0%, #c2e9fb 100%);
             width: drawerWidth,
             transition: theme.transitions.create('width', {
                 easing: theme.transitions.easing.sharp,
@@ -128,7 +79,7 @@ const useStyles = makeStyles(theme => {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'flex-end',
-            // padding: '7px 8px',
+            padding: '0px 8px',
             ...theme.mixins.toolbar,
         },
         adminName: {
@@ -136,21 +87,56 @@ const useStyles = makeStyles(theme => {
             flexGrow: 1,
             paddingLeft: '12px'
 
-        }
+        },
+        appBarSpacer: theme.mixins.toolbar,
+        content: {
+            flexGrow: 1,
+            height: '100vh',
+            overflow: 'auto',
+        },
+        container: {
+            paddingTop: theme.spacing(4),
+            paddingBottom: theme.spacing(4),
+        },
+
+        paper: {
+            padding: theme.spacing(2),
+            display: 'flex',
+            overflow: 'auto',
+            flexDirection: 'column',
+        },
+        fixedHeight: {
+            height: 240,
+        },
     })
 });
 
 
 function Dashboard(props) {
     const [open, setOpen] = React.useState(true);
+    // const [noidung,setNoiDung] = React.useState({Component:ThongKe});
+    const [indexList,setIndex] = React.useState(0);
     const classes = useStyles();
-    const Components = [];
     const handleDrawerOpen = () => {
         setOpen(true);
     }
     const handleDrawerClose = () => setOpen(false);
+    const handleOnClick = (index)=>{
+        setIndex(index);
+    }
+    const renderNoiDung = () =>{
+        return listFunction.map((item,index)=>{
+            if(indexList === index){
+                let Component = item.Component;
+                return(
+                    <Component key={index}/>
+                )
+            }
+            
+        })
+    }
     return (
-        <div className={classes.content}>
+        <div className={classes.content1}>
             <AppBar position="absolute" className={clsx(classes.appBar, open && classes.appBarShift)}>
                 <Toolbar className={classes.toolbar}>
                     <IconButton
@@ -162,8 +148,8 @@ function Dashboard(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.adminName}>
-                        Dashboard
+                    <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
+                        {listFunction[indexList].name}
                     </Typography>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
@@ -188,31 +174,23 @@ function Dashboard(props) {
                         <ChevronLeftIcon />
                     </IconButton>
                 </div>
-                <Divider/>
-                <List></List>
+                <Divider />
+                <List>
+                    <ListFunction click={handleOnClick} />
+                </List>
+                <Divider />
             </Drawer>
+            <main className={classes.content}>
+                <div className={classes.appBarSpacer} />
+                <Container maxWidth="lg" className={classes.container}>
+                    {/* <ThongKe /> */}
+                    {/* {renderComponent()} */}
+                    {/* {<Component/>} */}
+                    {renderNoiDung()}
+                </Container>
+
+            </main>
         </div>
-
-        // <div>
-        //     <div className={classes["left-navbar"]}>
-        //         <div className={classes.dashBoard}>
-        //             <div className={classes.userInfo}>
-
-        //                 <img
-        //                     className={classes.avatarImg}
-        //                     src={"../../img/avatar.png"}
-        //                     alt="user-img"
-        //                 // src={avatarIcon}
-        //                 />
-        //                 <p><p style={{ 'margin': '0' }}>Xin Chào,</p>{props.adminInfo.hoTen}</p>
-        //             </div>
-        //             <div className={classes.manageBox}>
-        //                 <p className={classes.boxTitle}>Thêm người dùng</p>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </div>
-        // <Dashboard2/>
     )
 }
 
