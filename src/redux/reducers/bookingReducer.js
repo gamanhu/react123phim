@@ -53,7 +53,6 @@ const bookingReducer = (state = initialState, action) => {
                     gheKhachChon.seatInfo = action.seatInfo;
                     gheKhachChon2.push(gheKhachChon);
                     state.gheKhachChon = gheKhachChon2;
-
                 }
 
             } else {
