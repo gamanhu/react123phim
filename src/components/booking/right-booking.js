@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
-import noticeImg from "../img/exclamation.png";
+import noticeImg from "../../img/exclamation.png";
 import { connect } from 'react-redux';
-import * as action from "../redux/actions";
+import * as action from "../../redux/actions";
 
 
-function BookingInfo(props) {
+function RightBooking(props) {
     // const [state,setState] = useState(props);
     const renderGheKhachChon = (gheKhachChon) => {
         if (gheKhachChon && gheKhachChon.length > 0) {
@@ -37,12 +37,11 @@ function BookingInfo(props) {
     useEffect(() => {
 
     }, [props])
-    console.log(props.thongTinPhim);
     return (
         <div className="right__content">
             <div className="booking-info__content">
                 <div className="row total">
-                    <span className="cash">{renderTienGhe(props.gheKhachChon)}đ</span>
+                    <span className="cash">{`${renderTienGhe(props.gheKhachChon)} đ`}</span>
                 </div>
                 <div className="row filmname">
                     <span className="tenPhim">{`${props.thongTinPhim.tenPhim}`}</span>
@@ -118,4 +117,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(BookingInfo);
+export default connect(mapStateToProps, mapDispatchToProps)(RightBooking);

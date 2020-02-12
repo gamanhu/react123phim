@@ -1,6 +1,6 @@
-import React, {useEffect} from 'react';
+import React,{useEffect} from 'react';
 import {NavLink} from "react-router-dom";
-import * as action from "../redux/actions";
+import * as action from "../../redux/actions";
 import { connect } from "react-redux";
  function SuatChieu(props) {
 
@@ -15,13 +15,13 @@ import { connect } from "react-redux";
     //         }
     //     })
     // }
-
     useEffect(()=>{
-        return ()=>{
-            const booking = `booking/1234`;
-            console.log(booking);
-        }
-    },[])
+        props.setBookingSuccess();
+    },[props])
+    const handleOnClick = (maLichChieu)=>{
+        props.getBoothInfo(maLichChieu);
+        // props.setBookingSuccess();
+    }
     
     const renderNgayChieu = (lichChieu, datelist) => {
         if (lichChieu.lstLichChieuTheoPhim && lichChieu.lstLichChieuTheoPhim.length > 0) {
@@ -31,20 +31,20 @@ import { connect } from "react-redux";
                     <div key={index2} className="start-time">
                         <p>Ngày: {ngay}</p>
                         {/* {renderGioChieu(lichChieu,ngay)} */}
-                        {
-                            lichChieu.lstLichChieuTheoPhim.map((item, index) => {
-                                if (ngay === (new Date(item.ngayChieuGioChieu).toLocaleDateString())) {
-
-                                    return (
-                                        <NavLink 
-                                        key={index} 
-                                        to={`/booking/${item.maLichChieu}`} 
-                                        onClick={()=>props.getBoothInfo(item.maLichChieu)} >
-                                            <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
-                                        </NavLink>
-                                    )
-                                }
-                            })
+                        {   
+                                lichChieu.lstLichChieuTheoPhim.map((item, index) => {
+                                    if (ngay === (new Date(item.ngayChieuGioChieu).toLocaleDateString())) {
+    
+                                        return (
+                                            <NavLink 
+                                            key={index} 
+                                            to={`/booking/${item.maLichChieu}`} 
+                                            onClick={()=>handleOnClick(item.maLichChieu)} >
+                                                <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
+                                            </NavLink>
+                                        )
+                                    }
+                                })
                         }
                         <div className="clear" />
                     </div>
@@ -109,6 +109,11 @@ const mapDispatchToProps = dispatch => {
     return{
         getBoothInfo : (maLichChieu) => {
             dispatch(action.actGetBoothInfoAPI(maLichChieu));
+        },
+        setBookingSuccess: ()=>{
+            dispatch({
+                type:"FALSE_BOOKING",
+            })
         }
     }
 };
