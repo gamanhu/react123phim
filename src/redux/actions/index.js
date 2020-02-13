@@ -78,14 +78,6 @@ export const actGetListMovieBrandAPI= (maHeThongRap,maNhom)=>{
         })
     }
 }
-export const actGetMovieInfoAPI = () => {
-    return dispatch => {
-        Axios({
-            method:"GET",
-            url: ``
-        })
-    }
-}
 //Login cho user
 export const actLoginUser = (user,history) => {
     return dispatch =>  {
@@ -210,6 +202,26 @@ export const actLoginAdmin = (user,history) => {
         .catch(err=>{
             alert(err);
         })
+    }
+}
+
+export const actGetListUserAPI = () => {
+    return dispatch => {
+        Axios({
+            method: "GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01`
+
+        })
+            .then(result => {
+                dispatch({
+                    type: ActionType.GET_LIST_USER,
+                    listUser: result.data
+                })
+            })
+            .catch(err => {
+                console.log(err);
+            })
+
     }
 }
 
