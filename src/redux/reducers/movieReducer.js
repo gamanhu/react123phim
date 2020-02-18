@@ -1,8 +1,9 @@
 import * as ActionTypes from "../constants/action-types";
 
-let initialState= {
-    listMovie:[],
-
+let initialState = {
+    listMovie: [],
+    movie: {},
+    danhSachCacRap: []
 
 };
 
@@ -16,25 +17,33 @@ const movieReducer = (state = initialState, action) => {
         // state.movie=action.movie;
         //     return {...state};
         case ActionTypes.ADD_MOVIE_SUCCESS:
-            let movie = [...state.listMovie,action.movie];
+            let movie = [...state.listMovie, action.movie];
             state.listMovie = [];
-            return {...state};
+            return { ...state };
         case ActionTypes.UPDATE_MOVIE_SUCCESS:
             let movie1 = [...state.listMovie];
-            let index = state.listMovie.findIndex(item=> item.maPhim = action.movie.maPhim);
-            if(index !== -1){
+            let index = state.listMovie.findIndex(item => item.maPhim = action.movie.maPhim);
+            if (index !== -1) {
                 movie1[index] = action.movie;
             }
             state.listMovie = [];
-            return {...state};
+            return { ...state };
         case ActionTypes.DELETE_MOVIE_SUCCESS:
             let movie2 = [...state.listMovie];
-            let index2 = state.listMovie.findIndex(item=> item.maPhim = action.maPhim);
-            if(index !== -1){
-                movie2.splice(index2,1);
+            let index2 = state.listMovie.findIndex(item => item.maPhim = action.maPhim);
+            if (index !== -1) {
+                movie2.splice(index2, 1);
             }
             state.listMovie = [];
-            return {...state}
+            return { ...state };
+        // Huy viet
+        case ActionTypes.GET_DETAIL_MOVIE:
+            state.movie = action.movie;
+            return { ...state };
+        case ActionTypes.GET_CINEMA:
+            state.danhSachCacRap = action.danhSachCacRap;
+            return { ...state };
+        // Huy viet
         default:
             return { ...state };
     }
