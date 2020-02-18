@@ -5,25 +5,28 @@
   color: white;
   .content {
     .intro-movie {
-      .center {
-        padding: 75px 20px;
-      }
-      .right {
-        text-align: center;
-        padding: 75px 0 75px 220px;
-        .chart {
-          position: relative;
-          span {
-            position: absolute;
-            top: 48%;
-            left: 50%;
-            transform: translate(-50%, -48%);
-            font-size: 3rem;
-          }
+      .flex{
+        display: flex;
+        .center {
+          padding: 75px 20px;
         }
-        .star {
-          i {
-            font-size: 1.2rem;
+        .right {
+          text-align: center;
+          padding: 75px 0 75px 220px;
+          .chart {
+            position: relative;
+            span {
+              position: absolute;
+              top: 48%;
+              left: 50%;
+              transform: translate(-50%, -48%);
+              font-size: 3rem;
+            }
+          }
+          .star {
+            i {
+              font-size: 1.2rem;
+            }
           }
         }
       }
@@ -50,14 +53,24 @@
       }
     }
     .tab02{
-      background-color: white;
-      color: white;
+      .lichChieu{
+        background-color: white;
+        color: white;
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      .thongtinPhim{
+        background: transparent;
+      }
     }
   }
+
   .removepadding{
     padding-left:0 ;
     padding-right: 0;
     color: black;
+    max-height: 530px;
+    overflow: scroll;
     .tab-content{
       .tab-pane{
         padding: 20px;
@@ -104,6 +117,26 @@
           opacity: 1;
         }
       }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .detail-movie .content .intro-movie .right{
+    display: none;
+  }
+  .detail-movie{
+    padding: 20px;
+  }
+  .detail-movie .content .intro-movie .flex{
+    display: block;
+  }
+  .detail-movie .content .intro-movie .flex .center{
+    padding: 10px;
+  }
+  .tab02 .thongtinPhim .row{
+    display: block;
+    .col-sm-6{
+      max-width: 100%;
     }
   }
 }

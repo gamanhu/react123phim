@@ -103,10 +103,29 @@ export const actGetShowTimes= (maHeThongRap)=>{
             url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
         })
         .then(result=>{
-            console.log(result);
+            // console.log(result);
             dispatch({
                 type:ActionType.GET_CINEMA,
-                danhSachCacRap : result.data
+                danhSachCacRap : result.data,
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
+//Lay logo rap 
+export const actGetListLogo= ()=>{
+    return dispatch => {
+        Axios({
+            method:"GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
+        })
+        .then(result=>{
+            console.log(result);
+            dispatch({
+                type:ActionType.GET_LOGO_CINEMA,
+                listLogo : result.data
             });
         })
         .catch(err=>{

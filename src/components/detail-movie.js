@@ -3,6 +3,7 @@ import PickingPlace from "./picking-place";
 import "../../node_modules/easy-pie-chart-master/dist/jquery.easypiechart";
 import { connect } from "react-redux";
 import * as action from "../redux/actions/index";
+import DetailShowtime from "./detail-showtime";
 
 import $ from "jquery";
 class DetailMovie extends Component {
@@ -19,32 +20,93 @@ class DetailMovie extends Component {
     });
     let id = this.props.match.params.id;
     this.props.gettimeMovie(id);
+    this.props.getListLogo();
     this.props.getHeThongRap('BHDStar');
+    this.props.getHeThongRap('Galaxy');
+    this.props.getHeThongRap('CGV');
+    this.props.getHeThongRap('CineStar');
+    this.props.getHeThongRap('LotteCinima');
+    this.props.getHeThongRap('MegaGS');
   }
+  makeid = (length)=> {
+    var result           = '';
+    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    var charactersLength = characters.length;
+    for ( var i = 0; i < length; i++ ) {
+       result += characters.charAt(Math.floor(Math.random() * charactersLength));
+    }
+    return result;
+ }
+ //Ham tim vi tri Rap trong mang
+ findIndex = (danhSachCacRap,ten) =>{
+  let vitriMang = -1;
+  for (let i = 0; i < danhSachCacRap.length; i++) {
+    for (let j = 0; j < danhSachCacRap[i].length; j++) {
+      if(danhSachCacRap[i][j].tenCumRap.indexOf(ten) !== -1){
+        vitriMang = i;
+        return vitriMang;
+      }
+    }
+  }
+  return -1;
+ }
   //Render thong tin lich chieu phim thong qua di cua phim
-  renderShowTimes = maHeThongRap => {
-    let { movie, danhSachCacRap } = this.props;
-    console.log(movie);
-    console.log(danhSachCacRap);
-    
+  renderShowTimes = (maHeThongRap,ten,danhSachCacRap,listLogo) => {
+    // this.props.getHeThongRap(maHeThongRap);
+    if(danhSachCacRap.length > 5){
+      let name ='',address ='';
+    let urlLogo ='';
+    for(let i = 0 ;i < listLogo.length;i++){
+      if(listLogo[i].maHeThongRap === maHeThongRap){
+        urlLogo = listLogo[i].logo;
+        break;
+      }
+    }
+    if(this.findIndex(danhSachCacRap,ten) !== -1){
+      let vitridanhsach = this.findIndex(danhSachCacRap,ten);
+      
+      if(this.props.movie.lichChieu ){
+        //Duyet xem rap do co trong mang lich chieu hay khong
+        let arr = [...this.props.movie.lichChieu];
+        let dem = 0;
+          for (let k = 0; k < danhSachCacRap[vitridanhsach].length; k++) {
+            for (let l = 0; l < arr.length; l++) {
+              if(danhSachCacRap[vitridanhsach][k].maCumRap === arr[l].thongTinRap.maCumRap){
+                dem ++;
+              }
+            }        
+          }
+        if(dem === 0){
+          return (<p>Xin lỗi rạp hiện tại không chiếu phim này!!!</p>)
+        }else{
+          return this.props.movie.lichChieu.map((item)=>{
+            for(let index = 0 ;index < danhSachCacRap[vitridanhsach].length;index++){
+              if(item.thongTinRap.maCumRap === danhSachCacRap[vitridanhsach][index].maCumRap){
+                name = danhSachCacRap[vitridanhsach][index].tenCumRap;
+                address = danhSachCacRap[vitridanhsach][index].diaChi;
+                return <DetailShowtime key={this.makeid(6)} logo={urlLogo} name={name} address={address} movie={item}/>;
+              }
+            }
+        });
+        }
+      }
+    }
+    }
   };
-  //LAYOUT SHOW TIMES
-  /**
-    //               <div className="d-flex mt-4">
-    //               <div>
-    //                 <img src="https://s3img.vcdn.vn/123phim/2018/09/bhd-star-vincom-3-2-15379527367766.jpg"/>
-    //               </div>
-    //               <div className="right">
-    //                 <p className="nameCinema">{rap.tenCumRap}</p>
-    //                 <p className="addressCinema">{rap.diaChi}</p>
-    //               </div>
-    //             </div>
-    //             <div className="btnGroup mt-3">
-    //           <button type="button" class="btn btn-primary"> {new Date(lichchieu.ngayChieuGioChieu).toLocaleTimeString()} ~ {new Date(lichchieu.ngayChieuGioChieu).toLocaleTimeString()}</button>
-    //             </div>
-    */
+  //Make url youtube == emeb
+  makeUrlEmeb = (url) =>{
+    // console.log(typeof(url));
+    if(url !== undefined){
+      let mainstring = url;
+      // console.log(mainstring)
+      let str = mainstring.replace("watch?v=","embed/");
+      // console.log(str);
+      return str;
+    }  
+  }
   render() {
-    let { movie } = this.props;
+    let { movie,danhSachCacRap,listLogo } = this.props;
+    // let rate = (movie.danhGia*100)/5;
     return (
       <div
         className="detail-movie"
@@ -54,11 +116,11 @@ class DetailMovie extends Component {
       >
         <div className="content">
           <div className="intro-movie">
-            <div className="d-flex justify-content-center">
+            <div className="flex justify-content-center">
               <div className="left">
                 <img
                   src={movie.hinhAnh}
-                  alt="21eq"
+                  alt=""
                   style={{ height: 340, width: 215 }}
                 />
               </div>
@@ -72,11 +134,11 @@ class DetailMovie extends Component {
                       borderRadius: 5
                     }}
                   >
-                    C16
+                    {movie.maNhom}
                   </span>{" "}
                   <span>{movie.tenPhim}</span>
                 </p>
-                <p>110 phút - 0 IMDb - 2D/Digital</p>
+                <p>120 phút - 4.0 IMDb - 2D/Digital</p>
                 <button type="button" className="btn btn-danger">
                   Mua vé
                 </button>
@@ -84,10 +146,11 @@ class DetailMovie extends Component {
               <div className="right">
                 <div
                   className="chart"
-                  data-percent={73}
+                  data-percent={80}
                   data-scale-color="#ffb400"
                 >
-                  <span>7.3</span>
+                  <span>4.0</span>
+                  {/* <span>{rate/10 + '.' + rate%10}</span> */}
                 </div>
                 <div className="star">
                   <i className="fas fa-star" style={{ color: "#FB4226" }} />
@@ -117,7 +180,7 @@ class DetailMovie extends Component {
           </ul>
           {/* Tab panes */}
           <div className="tab-content tab02">
-            <div className="tab-pane container active" id="lichchieu">
+            <div className="lichChieu tab-pane container active" id="lichchieu">
               <div className="row">
                 {/* Nav tabs */}
                 <div className="col-sm-4 removepadding">
@@ -125,7 +188,7 @@ class DetailMovie extends Component {
                     <li
                       className="nav-item"
                     >
-                      <a className="nav-link" data-toggle="tab" href="#BHD">
+                      <a className="nav-link active" data-toggle="tab" href="#BHD">
                         <img
                           src="http://movie0706.cybersoft.edu.vn/hinhanh/bhd-star-cineplex.png"
                           alt=""
@@ -146,7 +209,7 @@ class DetailMovie extends Component {
                     </li>
                     <li className="nav-item">
                       <a
-                        className="nav-link active"
+                        className="nav-link"
                         data-toggle="tab"
                         href="#CGV"
                       >
@@ -191,28 +254,44 @@ class DetailMovie extends Component {
                 <div className="col-sm-8 removepadding">
                   <div className="tab-content">
                     <div className="tab-pane container fade active" id="BHD">
-                      {this.renderShowTimes('BHD Star')}
+                      {this.renderShowTimes('BHDStar','BHD',danhSachCacRap,listLogo)} 
                     </div>
                     <div className="tab-pane container fade" id="GC">
-                      ...3
+                      {this.renderShowTimes('Galaxy','GLX',danhSachCacRap,listLogo)}
                     </div>
                     <div className="tab-pane container fade" id="CGV">
-                      ...1
+                      {this.renderShowTimes('CGV','CGV',danhSachCacRap,listLogo)}
                     </div>
                     <div className="tab-pane container fade" id="CS">
-                      ...4
+                      {this.renderShowTimes('CineStar','CNS',danhSachCacRap,listLogo)}
                     </div>
                     <div className="tab-pane container fade" id="LC">
-                      ...5
+                      {this.renderShowTimes('LotteCinima','Lotte',danhSachCacRap,listLogo)}
                     </div>
                     <div className="tab-pane container fade" id="MG">
-                      ...6
+                      {this.renderShowTimes('MegaGS','MegaGS',danhSachCacRap,listLogo)}
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="tab-pane container fade" id="thongtin"></div>
+            <div className="thongtinPhim tab-pane container fade" id="thongtin">
+              <div className="row">
+                <div className="col-sm-6">
+                  <h4>Mô tả</h4>
+                  <p>{movie.moTa}</p>
+                </div>
+                <div className="col-sm-6">
+                    <h4>Trailer :</h4>
+                    <iframe
+                      width={370}
+                      height={345}
+                      // sau /com phai co cum tu embed/ bo watchv=?
+                      src={this.makeUrlEmeb(movie.trailer)}
+                    ></iframe>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -225,15 +304,19 @@ const mapDispatchToProps = dispatch => {
     gettimeMovie: id => {
       dispatch(action.actGetDetailMovie(id));
     },
-    getHeThongRap: maHeThongRap => {
+    getHeThongRap: (maHeThongRap) => {
       dispatch(action.actGetShowTimes(maHeThongRap));
+    },
+    getListLogo: () =>{
+      dispatch(action.actGetListLogo());
     }
   };
 };
 const mapStateToProps = state => {
   return {
     movie: state.movieReducer.movie,
-    danhSachCacRap: state.movieReducer.danhSachCacRap
+    danhSachCacRap: state.movieReducer.danhSachCacRap,
+    listLogo: state.movieReducer.listLogo,
   };
 };
 export default connect(mapStateToProps, mapDispatchToProps)(DetailMovie);
