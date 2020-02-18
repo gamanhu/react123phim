@@ -12,6 +12,7 @@ let initialState = {
     },
     isLogin: false,
     isLoginAdmin: false,
+    listUser: []
 
 };
 
@@ -48,6 +49,13 @@ const userReducer = (state = initialState, action) => {
             state.isLoginAdmin = true;
             localStorage.setItem("AdminLogin", JSON.stringify(action.adminInfo));
             return { ...state };
+        case ActionTypes.GET_LIST_USER:
+            let listUser = action.listUser;
+            state.listUser = listUser;
+            return {...state};
+        case ActionTypes.ON_SAVE_USER_SUCCESS:
+            state.listUser = [];
+            return {...state};
         default:
             return { ...state };
     }

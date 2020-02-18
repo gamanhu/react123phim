@@ -19,12 +19,12 @@ function Navbar(props) {
             <div className="header">
                 <nav className="navbar navbar-expand-md bg-white justify-content-between align-items-center p-0">
                     {/* Brand */}
-                    <a className="navbar-brand pl-3" href="#ab">
+                    <NavLink className="navbar-brand pl-3" to="/">
                         <img
                             src={logoImg}
                             alt="123phim.vn-logo"
                             width="50px" />
-                    </a>
+                    </NavLink>
                     <button
                         className="navbar-toggler"
                         type="button"

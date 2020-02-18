@@ -1,0 +1,142 @@
+.detail-movie {
+  padding: 8.5% 20.3% 5.7%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  .content {
+    .intro-movie {
+      .flex{
+        display: flex;
+        .center {
+          padding: 75px 20px;
+        }
+        .right {
+          text-align: center;
+          padding: 75px 0 75px 220px;
+          .chart {
+            position: relative;
+            span {
+              position: absolute;
+              top: 48%;
+              left: 50%;
+              transform: translate(-50%, -48%);
+              font-size: 3rem;
+            }
+          }
+          .star {
+            i {
+              font-size: 1.2rem;
+            }
+          }
+        }
+      }
+    }
+    .navTab01 {
+        border: none;
+      .nav-item {
+        border: none;
+        .nav-link {
+          color: white;
+          border: none;
+          transition: all 0.2s;
+          font-weight: 500;
+          font-size: 20px;
+          cursor : pointer;
+          &.active {
+            background: transparent;
+            color: #FB4226;
+          }
+          &:hover{
+            transform: scale(1.2);
+          }
+        }
+      }
+    }
+    .tab02{
+      .lichChieu{
+        background-color: white;
+        color: white;
+        border-radius: 50px;
+        overflow: hidden;
+      }
+      .thongtinPhim{
+        background: transparent;
+      }
+    }
+  }
+
+  .removepadding{
+    padding-left:0 ;
+    padding-right: 0;
+    color: black;
+    max-height: 530px;
+    overflow: scroll;
+    .tab-content{
+      .tab-pane{
+        padding: 20px;
+        .d-flex{
+          .right{
+            padding: 0 10px;
+            .nameCinema{
+              font-weight: 500;
+              font-size: 15px;
+              margin-bottom: 0;
+              color: rgb(240, 82, 82);
+            }
+            .addressCinema{
+              color: rgb(87, 81, 80);
+              font-size: 14px;
+            }
+          }
+          img{
+            height: 60px;
+            width: 60px;
+          }
+        }
+      }
+    }
+  }
+  .cinemal{
+    display: block;
+    border: none;
+    .nav-item{
+      width: 100%;
+      color: black;
+      .nav-link{
+        padding: 18px;
+        opacity: 0.5;
+        font-weight: 500;
+        color: black;
+        img{
+          height: 50px;
+          width: 50px;
+          margin-right: 10px;
+        }
+        &.active{
+          border: none;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 768px) {
+  .detail-movie .content .intro-movie .right{
+    display: none;
+  }
+  .detail-movie{
+    padding: 20px;
+  }
+  .detail-movie .content .intro-movie .flex{
+    display: block;
+  }
+  .detail-movie .content .intro-movie .flex .center{
+    padding: 10px;
+  }
+  .tab02 .thongtinPhim .row{
+    display: block;
+    .col-sm-6{
+      max-width: 100%;
+    }
+  }
+}
