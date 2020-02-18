@@ -53,6 +53,9 @@ const userReducer = (state = initialState, action) => {
             let listUser = action.listUser;
             state.listUser = listUser;
             return {...state};
+        case ActionTypes.ON_SAVE_USER_SUCCESS:
+            state.listUser = [];
+            return {...state};
         default:
             return { ...state };
     }

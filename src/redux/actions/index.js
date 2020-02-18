@@ -21,6 +21,23 @@ export const actGetListMovieAPI = () => {
 
     }
 }
+
+// Lay thong tin lich chieu cua 1 bo phim
+export const actGetMovieOnScreenListAPI = (maPhim) =>{
+    return dispatch => {
+        Axios({
+            method: "GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+            data: maPhim
+        })
+        .then(result => {
+            console.log(result);
+        })
+        .catch (err =>{
+            console.log(err);
+        })
+    }
+}
 // Lay thong tin chuoi he thong rap
 export const actGetListCinemaBrandAPI = () => {
     return dispatch => {
@@ -224,4 +241,170 @@ export const actGetListUserAPI = () => {
 
     }
 }
+export const actOnEditPhimAPI = (data)=> {
+    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            method:"POST",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim`,
+            data,
+            headers: {
+                Authorization:`Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            dispatch({
+                type: ActionType.UPDATE_MOVIE_SUCCESS,
+                movie: data,
+            });
+            
+            alert('Cập Nhật Phim Thành Công');
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
+export const actOnAddPhimAPI = (data)=> {
+    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            method:"POST",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim`,
+            data: data,
+            headers: {
+                Authorization:`Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            
+            dispatch({
+                type: ActionType.ADD_MOVIE_SUCCESS,
+                movie: data,
+            });
+            
+            alert('Thêm Phim Thành Công');
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
+export const actOnDeletePhimAPI = (maPhim)=> {
+    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            method:"DELETE",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+            data: maPhim,
+            headers: {
+                Authorization:`Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            dispatch({
+                type: ActionType.DELETE_MOVIE_SUCCESS,
+                maPhim: maPhim,
+            });
+            alert('Xóa Phim Thành Công');
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
+export const actOnEditUserAPI = (data)=> {
+    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            method:"PUT",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            data: data,
+            headers: {
+                Authorization:`Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            console.log(result.data);
+            alert("Cap nhat thanh cong")
+            dispatch({
+                type:ActionType.ON_SAVE_USER_SUCCESS,
+            })
+        })
+        .catch(err=>{
+            console.log(err);
+            alert("Cap nhat that bai")
+        })
+    }
+}
+export const actOnAddUserAPI = (data)=> {
+    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            method:"POST",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung`,
+            data: data,
+            headers: {
+                Authorization:`Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            console.log(result.data);
+            dispatch({
+                type:ActionType.ON_SAVE_USER_SUCCESS,
+            })
+            alert("Them Nguoi Dung thanh cong")
+
+        })
+        .catch(err=>{
+            console.log(err);
+            alert("Them Nguoi Dung that bai")
+        })
+    }
+}
+export const actOnDeleteUserAPI = (taiKhoan)=> {
+    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            method:"DELETE",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+            data: taiKhoan,
+            headers: {
+                Authorization:`Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            dispatch({
+                type: ActionType.ON_SAVE_USER_SUCCESS,
+            });
+            alert('Xóa Nguoi Dung Thành Công');
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
+export const actUpdateImgAPI = (maPhim,data) => {
+    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            method:"POST",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim`,
+            data,
+            headers:{
+                'accept': 'application/json',
+                'Accept-Language': 'en-US,en;q=0.8',
+                'Content-Type': 'multipart/form-data',
+                // Authorization: `Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            alert('thanhcong');
+        })
+        .catch(err=>{
+            alert('thatbai');
+        })
+    }
+}
+
 

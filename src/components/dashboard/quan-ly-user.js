@@ -7,6 +7,7 @@ import { TableHead, TableCell, TableBody,
 } from '@material-ui/core';
 import ModalUser from "./modal-user";
 import IsLoading from "../booking/is-loading";
+import Pagination from '@material-ui/lab/Pagination';
 import clsx from 'clsx';
 
 
@@ -58,7 +59,7 @@ const useStyles = makeStyles(theme => ({
         marginBottom: 0,
     },
     boxTitle: {
-        flexGrow: 1,
+        // flexGrow: 1,
         marginBottom: 0,
     },
     modal: {
@@ -87,6 +88,7 @@ function QuanLyUser(props) {
     }); 
     const [loading,setLoading] = React.useState(false);
     const [page,setPage] = React.useState(1);
+    const [totalPage,setTotal] = React.useState(0)
     const handleOpen = (user = false) => {
         setOpen({
             ...open,
@@ -94,6 +96,44 @@ function QuanLyUser(props) {
             onEdit: user
         });
     };
+    const chunkify = (a, n, balanced) => {
+        if (n < 2)
+            return [a];
+
+        let len = a.length,
+            out = [],
+            i = 0,
+            size;
+
+        if (len % n === 0) {
+            size = Math.floor(len / n);
+            while (i < len) {
+                out.push(a.slice(i, i += size));
+            }
+        }
+
+        else if (balanced) {
+            while (i < len) {
+                size = Math.ceil((len - i) / n--);
+                out.push(a.slice(i, i += size));
+            }
+        }
+
+        else {
+
+            n--;
+            size = Math.floor(len / n);
+            if (len % size === 0)
+                size--;
+            while (i < size * n) {
+                out.push(a.slice(i, i += size));
+            }
+            out.push(a.slice(size * n));
+
+        }
+
+        return out;
+    }
 
     const handleClose = () => {
         setOpen({
@@ -106,38 +146,52 @@ function QuanLyUser(props) {
         if (!props.listUser.length > 0) {
             props.getListUser();
         } else {
+            let total = chunkify(props.listUser,20,20);
+            setTotal(total.length);
             setLoading(true);
         }
         console.log(props);
 
     }, [props]);
-    const renderTable = (listUser) => {
-        let listUser2 = listUser.filter(item => {
-            return item.taiKhoan.toLowerCase().indexOf(keyWord.toLowerCase()) > -1;
-        });
+    const renderTable = (pagination,keyW) => {
+        let listUser2;
+        if(keyW === ''){
+            listUser2 = chunkify(props.listUser,20,20);
+            listUser2 = listUser2[pagination-1]; 
+        } else {
+            listUser2 = props.listUser.filter(item => {
+                return item.taiKhoan.toLowerCase().indexOf(keyWord.toLowerCase()) > -1;
+            });
 
-        return listUser2.map((user, index) => {
-            return (
-                <TableRow key={index} className={index%2 != 1?``:classes.colorRow}>
-                    <TableCell>{user.taiKhoan}</TableCell>
-                    <TableCell>{user.hoTen}</TableCell>
-                    <TableCell>{user.maLoaiNguoiDung}</TableCell>
-                    <TableCell align="right">
-                        <Button variant="contained" color="primary" onClick={() => handleOpen(user)}>
-                            Sửa
-                        </Button>
+        }
+        if(listUser2 && listUser2.length>0){
+            return listUser2.map((user, index) => {
+                return (
+                    <TableRow key={index} className={index%2 != 1?``:classes.colorRow}>
+                        <TableCell>{user.taiKhoan}</TableCell>
+                        <TableCell>{user.hoTen}</TableCell>
+                        <TableCell>{user.maLoaiNguoiDung}</TableCell>
+                        <TableCell align="right">
+                            <Button variant="contained" color="primary" onClick={() => handleOpen(user)}>
+                                Sửa
+                            </Button>
+    
+                        </TableCell>
+                    </TableRow>
+                )
+            })
 
-                    </TableCell>
-                </TableRow>
-            )
-        })
+        }
     }
     const handleOnChange = (e) => {
         let searchContent = e.target.value;
         setkeyWord(searchContent);
 
     }
-
+    const handleChangePage = (e,value) => {
+        let pagina = value
+        setPage(pagina);
+    }
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.scrollBar);
     if(loading){
         return (
@@ -149,12 +203,15 @@ function QuanLyUser(props) {
                 <Grid container spacing={3}>
                     <Grid item xs={12} >
                         <Paper className={fixedHeightPaper}>
-                            <div className={classes.title}>
+                            <div >
                                 <Typography component="h2" variant="h6" color="primary" className={classes.boxTitle} >
                                     Danh Sách Người Dùng
                             </Typography>
-                                
+                            <div className={classes.title}>
+                                <Pagination onChange={handleChangePage} className={classes.searchBar} count = {totalPage} showFirstButton showLastButton/>
                                 <TextField onChange={handleOnChange} className={classes.searchBar} id="outlined-basic" label="Tìm kiếm người dùng (theo tài khoản)" />
+
+                            </div>
     
                             </div>
                             <Table size="small">
@@ -167,7 +224,7 @@ function QuanLyUser(props) {
                                     </TableRow>
                                 </TableHead>
                                 <TableBody className={classes.fixedHeight}>
-                                    {renderTable(props.listUser)}
+                                    {renderTable(page,keyWord)}
     
                                 </TableBody>
                             </Table>

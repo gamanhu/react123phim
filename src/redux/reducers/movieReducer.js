@@ -3,6 +3,7 @@ import * as ActionTypes from "../constants/action-types";
 let initialState= {
     listMovie:[],
 
+
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -14,6 +15,26 @@ const movieReducer = (state = initialState, action) => {
         // case ActionTypes.GET_DETAIL_MOVIE: 
         // state.movie=action.movie;
         //     return {...state};
+        case ActionTypes.ADD_MOVIE_SUCCESS:
+            let movie = [...state.listMovie,action.movie];
+            state.listMovie = [];
+            return {...state};
+        case ActionTypes.UPDATE_MOVIE_SUCCESS:
+            let movie1 = [...state.listMovie];
+            let index = state.listMovie.findIndex(item=> item.maPhim = action.movie.maPhim);
+            if(index !== -1){
+                movie1[index] = action.movie;
+            }
+            state.listMovie = [];
+            return {...state};
+        case ActionTypes.DELETE_MOVIE_SUCCESS:
+            let movie2 = [...state.listMovie];
+            let index2 = state.listMovie.findIndex(item=> item.maPhim = action.maPhim);
+            if(index !== -1){
+                movie2.splice(index2,1);
+            }
+            state.listMovie = [];
+            return {...state}
         default:
             return { ...state };
     }

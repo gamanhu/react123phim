@@ -8,7 +8,6 @@ export default function PickingFast(props) {
         onOpenPhim:false
     });
     const chonPhim = (tenPhim,maPhim) => {
-        props.
         setState({
             Phim: tenPhim,
         })

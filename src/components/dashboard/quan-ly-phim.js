@@ -2,8 +2,10 @@ import React from 'react'
 import { connect } from "react-redux";
 import * as action from "../../redux/actions/index.js";
 import { makeStyles } from "@material-ui/core/styles";
-import { TableHead, TableCell, TableBody,
-    TableRow, Table, Paper, Grid, Typography, Button, TextField
+import FormData from 'form-data';
+import {
+    TableHead, TableCell, TableBody,
+    TableRow, Table, Paper, Grid, Typography, Button, TextField, Modal
 } from '@material-ui/core';
 import ModalPhim from "./modal-phim";
 import clsx from 'clsx';
@@ -64,15 +66,15 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
         justifyContent: 'center',
         outline: 0,
-    }, 
+    },
     paperFade: {
         backgroundColor: theme.palette.background.paper,
         border: '2px solid #000',
         boxShadow: theme.shadows[5],
         padding: theme.spacing(2, 4, 3),
     },
-    colorRow:{
-        backgroundColor:'#e9e9e9'
+    colorRow: {
+        backgroundColor: '#e9e9e9'
     }
 
 }))
@@ -82,6 +84,7 @@ const useStyles = makeStyles(theme => ({
 function QuanLyPhim(props) {
     const classes = useStyles();
     const [keyWord, setkeyWord] = React.useState('');
+    const [inputOpen, setInputOpen] = React.useState(false);
     const [open, setOpen] = React.useState({
         onOpen: false,
         onEdit: {},
@@ -101,6 +104,12 @@ function QuanLyPhim(props) {
             onEdit: false,
         });
     };
+    const handleInputOpen = (movie) => {
+        setInputOpen(true);
+    }
+    const handleInputClose = () => {
+        setInputOpen(false);
+    }
     React.useEffect(() => {
         if (!props.listMovie.length > 0) {
             props.getListMovie();
@@ -115,7 +124,7 @@ function QuanLyPhim(props) {
         });
         return listMovie2.map((movie, index) => {
             return (
-                <TableRow key={index} className={index%2 != 1?``:classes.colorRow}>
+                <TableRow key={index} className={index % 2 != 1 ? `` : classes.colorRow}>
                     <TableCell>{movie.maPhim}</TableCell>
                     <TableCell>{movie.tenPhim}</TableCell>
                     <TableCell>{new Date(movie.ngayKhoiChieu).toLocaleDateString()}</TableCell>
@@ -124,7 +133,7 @@ function QuanLyPhim(props) {
                         <Button variant="contained" color="primary" onClick={() => handleOpen(movie)}>
                             Sửa
                         </Button>
-
+                        <Button variant="contained" color="default" onClick={() => handleInputOpen(movie)} > UpImg </Button>
                     </TableCell>
                 </TableRow>
             )
@@ -135,13 +144,66 @@ function QuanLyPhim(props) {
         setkeyWord(searchContent);
 
     }
+    const handleSubmit = (e) => {
+        e.preventDefault(); console.log(e);
+    }
+    const handleImgChange = e => {
+        console.log(e);
+        let preview = document.querySelector('#preview');
+        let files = document.querySelector('input[type=file]').files;
+        console.log(files);
+        const file = new Blob([files[0]],{type:'image/*'});
+        let formData = new FormData();
+        formData.append('image',file,file.filename);
+        console.log(formData)
+        props.updateImg(2194,formData);
+        function readAndPreview(file) {
+
+            // Make sure `file.name` matches our extensions criteria
+            if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
+                var reader = new FileReader();
+
+                reader.addEventListener("load", function () {
+                    var image = new Image();
+                    image.height = 100;
+                    image.title = file.name;
+                    image.src = this.result;
+                    preview.appendChild(image);
+                }, false);
+
+                reader.readAsDataURL(file);
+            }
+
+        }
+        
+
+        if (files) {
+            [].forEach.call(files, readAndPreview);
+        }
+    }
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.scrollBar);
     return (
         <div>
-            <Button variant="contained" className={classes.addPhimBtn} onClick={()=>handleOpen()}>
+            <Button variant="contained" className={classes.addPhimBtn} onClick={() => handleOpen()}>
                 + Thêm Phim Mới
             </Button>
             <ModalPhim open={open.onOpen} close={handleClose} movieEdit={open.onEdit} />
+            <Modal
+                aria-labelledby="transition-modal-title"
+                aria-describedby="transition-modal-description"
+                open={inputOpen}
+                onClose={handleInputClose}
+                className={classes.modal}
+            >
+                <div className={classes.paperFade}>
+                    <form noValidate autoComplete="off" onSubmit={handleSubmit}>
+                        <input type='file' onChange={handleImgChange} />
+                        <div id="preview"></div>
+                        <Button type="submit">Nop</Button>
+
+                    </form>
+                </div>
+            </Modal>
             <Grid container spacing={3}>
                 <Grid item xs={12} >
                     <Paper className={fixedHeightPaper}>
@@ -174,11 +236,15 @@ function QuanLyPhim(props) {
         </div>
     )
 }
+
 const mapDispatchToProps = dispatch => {
     return {
         getListMovie: () => {
             dispatch(action.actGetListMovieAPI());
         },
+        updateImg: (maPhim,data)=>{
+            dispatch(action.actUpdateImgAPI(maPhim,data));
+        }
     }
 }
 const mapStateToProps = state => {

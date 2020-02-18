@@ -1,7 +1,8 @@
 import React from 'react'
 import { makeStyles } from "@material-ui/core/styles";
 import { Modal, Typography, FormControl, Input, InputLabel, Divider, Button } from '@material-ui/core';
-
+import {connect} from "react-redux";
+import * as action from "../../redux/actions";
 const useStyles = makeStyles(theme => ({
 
     paperFade: {
@@ -32,7 +33,7 @@ const useStyles = makeStyles(theme => ({
     }
 }))
 
-export default function ModalUser(props) {
+function ModalUser(props) {
     let classes = useStyles();
     const [state, setState] = React.useState({
         taiKhoan: "",
@@ -74,6 +75,17 @@ export default function ModalUser(props) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
+        if(props.listUser){
+            props.onEditUser(state);
+
+        }else {
+            props.onAddUser(state);
+        }
+        props.close();
+    }
+    const handleXoa = (taiKhoan) => {
+        props.onDeleteUser(taiKhoan);
+        props.close();
     }
     console.log(state);
     return (
@@ -114,7 +126,7 @@ export default function ModalUser(props) {
                     </FormControl>
                     <FormControl fullWidth className={classes.form}>
                         <InputLabel htmlFor="component-simple">Số Điện Thoại</InputLabel>
-                        <Input name='soDT' value={state.soDT} onChange={handleChange} />
+                        <Input name='soDt' value={state.soDt} onChange={handleChange} />
                     </FormControl>
                     <FormControl fullWidth className={classes.form}>
                         <InputLabel htmlFor="component-simple">Mã Nhóm</InputLabel>
@@ -130,7 +142,7 @@ export default function ModalUser(props) {
                     </FormControl>
                     <Divider />
                     <Button type="submit" className={classes.button} variant="contained" color="primary">{props.userEdit ? `Cập Nhật Thông Người Dùng` : `Thêm Người Dùng`}</Button>
-                    {props.userEdit ? <Button type="submit" className={classes.btnXoa} variant="contained" color="secondary">Xóa Người Dùng</Button> : ``}
+                    {props.userEdit ? <Button type="button" onClick={() => handleXoa(state.taiKhoan)} className={classes.btnXoa} variant="contained" color="secondary">Xóa Người Dùng</Button> : ``}
 
                 </form>
             </div>
@@ -138,3 +150,17 @@ export default function ModalUser(props) {
 
     )
 }
+const mapDispatchToProps = dispatch => {
+    return {
+        onEditUser: (data) => {
+            dispatch(action.actOnEditUserAPI(data))
+        },
+        onAddUser: (data) => {
+            dispatch(action.actOnAddUserAPI(data))
+        },
+        onDeleteUser: taiKhoan => {
+            dispatch(action.actOnDeleteUserAPI(taiKhoan))
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(ModalUser);
