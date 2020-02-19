@@ -82,7 +82,8 @@ class DetailMovie extends Component {
               if(item.thongTinRap.maCumRap === danhSachCacRap[vitridanhsach][index].maCumRap){
                 name = danhSachCacRap[vitridanhsach][index].tenCumRap;
                 address = danhSachCacRap[vitridanhsach][index].diaChi;
-                return <DetailShowtime key={this.makeid(6)} logo={urlLogo} name={name} address={address} movie={item}/>;
+                let maLichChieu = item.maLichChieu;
+                return <DetailShowtime key={this.makeid(6)} logo={urlLogo} maLichChieu={maLichChieu} name={name} address={address} movie={item}/>;
               }
             }
         });

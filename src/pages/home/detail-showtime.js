@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { NavLink } from "react-router-dom";
 
 export default class DetailShowtime extends Component {
     render() {
+        let {maLichChieu} = this.props;
         return (
-            <div>
+            <div className="detail_Show_time">
                 <div className="d-flex mt-4">
               <div>
                 <img src={this.props.logo}/>
@@ -17,7 +19,9 @@ export default class DetailShowtime extends Component {
               Ngày công chiếu : {new Date(this.props.movie.ngayChieuGioChieu).toLocaleDateString('en-GB')}
             </div>
             <div className="btnGroup mt-3">
-              <button type="button" className="btn btn-primary">{new Date(this.props.movie.ngayChieuGioChieu).toLocaleTimeString()}</button>
+              <button>
+                <NavLink to={`/booking/${maLichChieu}`}>{new Date(this.props.movie.ngayChieuGioChieu).toLocaleTimeString()}</NavLink>
+              </button>
             </div>
             </div>
         )
