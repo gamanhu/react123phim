@@ -3,8 +3,8 @@ import * as ActionTypes from "../constants/action-types";
 let initialState = {
     listMovie: [],
     movie: {},
-    danhSachCacRap: []
-
+    danhSachCacRap: [],
+    listLogo : []
 };
 
 const movieReducer = (state = initialState, action) => {
@@ -41,9 +41,14 @@ const movieReducer = (state = initialState, action) => {
             state.movie = action.movie;
             return { ...state };
         case ActionTypes.GET_CINEMA:
-            state.danhSachCacRap = action.danhSachCacRap;
+            let danhSachCacRap = [...state.danhSachCacRap];
+            danhSachCacRap.push(action.danhSachCacRap);
+            state.danhSachCacRap =danhSachCacRap;
             return { ...state };
         // Huy viet
+        case ActionTypes.GET_LOGO_CINEMA:
+            state.listLogo = action.listLogo;
+            return { ...state };
         default:
             return { ...state };
     }

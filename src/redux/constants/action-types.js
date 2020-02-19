@@ -5,6 +5,7 @@ export const GET_LIST_MOVIE_BRAND="GET_LIST_MOVIE_BRAND";
 // Huy viet
 export const GET_DETAIL_MOVIE="GET_DETAIL_MOVIE";
 export const GET_CINEMA="GET_CINEMA";
+export const GET_LOGO_CINEMA="GET_LOGO_CINEMA";
 // Huy viet
 export const USER_LOGIN_SUCCESS = "USER_LOGIN_SUCCESS";
 export const USER_SIGN_OUT = "USER_SIGN_OUT";

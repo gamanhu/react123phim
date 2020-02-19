@@ -77,7 +77,25 @@ export const actGetShowTimes= (maHeThongRap)=>{
 }
 
 // Huy viet 
-
+//Lay logo rap 
+export const actGetListLogo= ()=>{
+    return dispatch => {
+        Axios({
+            method:"GET",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
+        })
+        .then(result=>{
+            console.log(result);
+            dispatch({
+                type:ActionType.GET_LOGO_CINEMA,
+                listLogo : result.data
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
 
 // Lay thong tin chuoi he thong rap
 export const actGetListCinemaBrandAPI = () => {
