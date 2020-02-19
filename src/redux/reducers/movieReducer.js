@@ -4,7 +4,9 @@ let initialState = {
     listMovie: [],
     movie: {},
     danhSachCacRap: [],
+    listLogo : [],
     trailerSrc: ''
+
 
 };
 
@@ -42,13 +44,21 @@ const movieReducer = (state = initialState, action) => {
             state.movie = action.movie;
             return { ...state };
         case ActionTypes.GET_CINEMA:
-            state.danhSachCacRap = action.danhSachCacRap;
+            let danhSachCacRap = [...state.danhSachCacRap];
+            danhSachCacRap.push(action.danhSachCacRap);
+            state.danhSachCacRap =danhSachCacRap;
             return { ...state };
         // Huy viet
+
+        case ActionTypes.GET_LOGO_CINEMA:
+            state.listLogo = action.listLogo;
+            return { ...state };
+
         case ActionTypes.PUT_TRAILER_SRC:
             let trailerSrc = action.trailer;
             state.trailerSrc = trailerSrc
             return {...state};
+
         default:
             return { ...state };
     }

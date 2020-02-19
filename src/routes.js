@@ -15,7 +15,6 @@ const routesHome = [
         exact: false,
         component: DetailMovie
     }
-
 ];
 
 

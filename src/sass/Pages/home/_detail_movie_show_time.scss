@@ -1,0 +1,17 @@
+.detail_Show_time{
+    .btnGroup{
+        button{
+            padding: 5px 10px;
+            a{
+            font-family: "SF Medium";
+            font-size: 18px;
+            font-weight: 700;
+            color: #108f3e;
+            &:hover{
+                text-decoration: none;
+            }
+            }
+            
+        }
+    }
+}
