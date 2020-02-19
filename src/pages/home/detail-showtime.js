@@ -13,8 +13,11 @@ export default class DetailShowtime extends Component {
                 <p className="addressCinema">{this.props.address}</p>
               </div>
             </div>
+            <div>
+              Ngày công chiếu : {new Date(this.props.movie.ngayChieuGioChieu).toLocaleDateString('en-GB')}
+            </div>
             <div className="btnGroup mt-3">
-            <button type="button" className="btn btn-primary">{new Date(this.props.movie.ngayChieuGioChieu).toLocaleTimeString()}</button>
+              <button type="button" className="btn btn-primary">{new Date(this.props.movie.ngayChieuGioChieu).toLocaleTimeString()}</button>
             </div>
             </div>
         )
