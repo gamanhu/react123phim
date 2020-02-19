@@ -8,24 +8,24 @@ let initialState = {
     Exist: true,
 }
 
-const initial = (state = initialState) => {
-    if (!JSON.parse(localStorage.getItem("isBookingSuccess"))) {
-        state.danhSachGhe = JSON.parse(localStorage.getItem("danhSachGhe"));
-        state.thongTinPhim = JSON.parse(localStorage.getItem("thongTinPhim"));
-        state.isBookingSuccess = JSON.parse(localStorage.getItem("isBookingSuccess"));
-    }  else {
-        if(localStorage.getItem("danhSachGhe") && localStorage.getItem("thongTinPhim")){
-            localStorage.removeItem("danhSachGhe");
-            state.thongTinPhim = JSON.parse(localStorage.getItem("thongTinPhim"));
-            state.isBookingSuccess = JSON.parse(localStorage.getItem("isBookingSuccess"));
-        } else {
-            state.thongTinPhim = JSON.parse(localStorage.getItem("thongTinPhim"));
-            state.isBookingSuccess = JSON.parse(localStorage.getItem("isBookingSuccess"));
+// const initial = (state = initialState) => {
+//     if (!JSON.parse(localStorage.getItem("isBookingSuccess"))) {
+//         state.danhSachGhe = JSON.parse(localStorage.getItem("danhSachGhe"));
+//         state.thongTinPhim = JSON.parse(localStorage.getItem("thongTinPhim"));
+//         state.isBookingSuccess = JSON.parse(localStorage.getItem("isBookingSuccess"));
+//     }  else {
+//         if(localStorage.getItem("danhSachGhe") && localStorage.getItem("thongTinPhim")){
+//             localStorage.removeItem("danhSachGhe");
+//             state.thongTinPhim = JSON.parse(localStorage.getItem("thongTinPhim"));
+//             state.isBookingSuccess = JSON.parse(localStorage.getItem("isBookingSuccess"));
+//         } else {
+//             state.thongTinPhim = JSON.parse(localStorage.getItem("thongTinPhim"));
+//             state.isBookingSuccess = JSON.parse(localStorage.getItem("isBookingSuccess"));
 
-        }
-    }
-        return { ...state };
-}
+//         }
+//     }
+//         return { ...state };
+// }
 // initial();
 
 const bookingReducer = (state = initialState, action) => {
