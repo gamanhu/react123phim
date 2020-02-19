@@ -264,6 +264,8 @@
     #comingSoon.tab-pane {
       position: relative;
       .carousel-inner {
+        transform: translateY(30%);
+        animation: appear-anim 0.5s ease forwards;
         .film-list {
           background-color: white;
 
@@ -327,6 +329,8 @@
         touch-action: pan-y;
       }
       .carousel-film {
+        transform: translateY(30%);
+        animation: appear-anim 0.5s ease forwards;
         // width: 940px;
         // display:flex;
         // align-items: center;
@@ -515,5 +519,11 @@
         }
       }
     }
+  }
+}
+
+@keyframes appear-anim{
+  to{
+    transform: translateY(0%);
   }
 }

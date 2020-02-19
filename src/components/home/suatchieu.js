@@ -19,7 +19,7 @@ import { connect } from "react-redux";
         props.setBookingSuccess();
     },[props])
     const handleOnClick = (maLichChieu)=>{
-        props.getBoothInfo(maLichChieu);
+        // props.getBoothInfo(maLichChieu);
         // props.setBookingSuccess();
     }
     
@@ -107,9 +107,9 @@ import { connect } from "react-redux";
 }
 const mapDispatchToProps = dispatch => {
     return{
-        getBoothInfo : (maLichChieu) => {
-            dispatch(action.actGetBoothInfoAPI(maLichChieu));
-        },
+        // getBoothInfo : (maLichChieu) => {
+        //     dispatch(action.actGetBoothInfoAPI(maLichChieu));
+        // },
         setBookingSuccess: ()=>{
             dispatch({
                 type:"FALSE_BOOKING",

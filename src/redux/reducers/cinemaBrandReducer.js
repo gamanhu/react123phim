@@ -5,7 +5,8 @@ let initialState = {
     brandName:"",
     listBranch: [],
     listMovieBrand: [],
-    listBranchHaveMovie:[]
+    listBranchHaveMovie:[],
+    // logo: '',
     
 }
 
@@ -22,6 +23,9 @@ const cinemaBrandReducer = (state=initialState,action) => {
             if(action.listBranch){
                 state.listBranch=action.listBranch;
                 state.brandName = action.brandName;
+                // let indexArr = state.listCinemaBrand.findIndex(item=>item.maHeThongRap === action.brandName);
+                // let logo = state.listCinemaBrand[indexArr].logo;
+                // state.logo = logo;
             }
             return{...state};
         case ActionTypes.GET_LIST_MOVIE_BRAND:
