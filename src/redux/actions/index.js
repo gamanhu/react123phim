@@ -202,7 +202,7 @@ export const actGetBoothInfoAPI = (maLichChieu)=>{
             };
         })
         .catch(err=>{
-            console.log(err);
+            alert(err.response.data);
         });
     }
 }

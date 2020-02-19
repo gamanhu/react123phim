@@ -60,7 +60,7 @@
       .list-cinemas {
         float: left;
         margin-left: 10%;
-        min-height: 705px;
+        height: 705px;
         max-height: 705px;
         border: 1px solid rgba(51, 51, 51, 0.5);
         border-bottom: 1px solid rgba(51, 51, 51, 0.5);
@@ -94,14 +94,30 @@
           height: 100%;
           background-color: rgba(51, 51, 51, 0.5);
         }
-        .nav-item{
-          padding:0;
-          margin:0;
+        .branch-item{
+          padding:15px;
+          float:left;
+          clear:both;
+          // margin:0;
+          position: relative;
+          // padding:0;
           width: 100%;
+          height: 100px;
+          border-left: none;
+          // border-top:none;
+          // border-bottom: 1px solid rgba(51, 51, 51, 0.5);
           &::before{
             content:"";
             width:0;
             background-color: none;
+          }
+          &:first-child{
+            border-top:none;
+            padding-top: 20px;
+          }
+          &:last-child{
+            border-right:none;
+            // padding-top: 20px;
           }
           .cinema-item {
             // padding: 20px;
@@ -130,13 +146,13 @@
             img {
               width: 50px;
               height: 50px;
-              margin-top: 15px;
+              // margin-top: 15px;
               float:left;
               // clear:both;
             }
             .cinema-item__detail {
               padding-left: 20px;
-              padding:15px;
+              // padding:15px;  
               width:70%;
               display: inline-block;
               // float:left;
@@ -145,17 +161,19 @@
               h5 {
                 font-size: 14px;
                 color: coral;
+                margin-bottom:0;
+                padding:0;
               }
-              span{
+              p{
                 display: block;
-                width:100%;
+                width:120%;
                 line-height: 1.4;
                 font-size: 12px;
                 color: #949494;
                 // width:100%;
-                // overflow: hidden;
-                -o-text-overflow: ellipsis;
-                text-overflow: hidden;
+                overflow: hidden;
+                // -o-text-overflow: ellipsis;
+                text-overflow: ellipsis;
                 white-space: nowrap;
               }
             }

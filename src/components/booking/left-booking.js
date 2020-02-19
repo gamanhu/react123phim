@@ -16,14 +16,16 @@ function LeftBooking(props) {
     useEffect(() => {
         // console.log(props);
         // props.actGetBoothInfo(props.maLichChieu);
-        if(props.danhSachGhe && props.danhSachGhe.length>0){
+        if (props.danhSachGhe && props.danhSachGhe.length > 0) {
             setState({
                 isLoading: false
             })
 
+
+
         }
     }, [props]);
-    
+    console.log(props.thongTinPhim);
     if (!props.isBookingSuccess) {
         return (
             <div className="left__content">
@@ -51,12 +53,12 @@ function LeftBooking(props) {
                     {state.isLoading ? (
                         <IsLoading />
                     ) : (
-                            (
-                                (<SeatPosition
-                                    danhSachGhe={props.danhSachGhe}
-                                />
-                                )
-                            ))}
+
+                            (<SeatPosition
+                                danhSachGhe={props.danhSachGhe}
+                            />
+                            )
+                        )}
                     <div className="note-seat">
                         <div className={`seat__type }`}>
                             <SeatIcon type={"Thuong"} state={{ isChoose: false }} />
@@ -103,9 +105,11 @@ const mapStateToProps = state => {
         danhSachGhe: state.bookingReducer.danhSachGhe,
         thongTinPhim: state.bookingReducer.thongTinPhim,
         isBookingSuccess: state.bookingReducer.isBookingSuccess,
+        Exist: state.bookingReducer.Exist,
         userInfo: state.userReducer.userInfo,
         isLogin: state.userReducer.isLogin,
+
     }
 }
 
-export default connect(mapStateToProps,null)(LeftBooking);
+export default connect(mapStateToProps, null)(LeftBooking);

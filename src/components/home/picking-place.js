@@ -4,7 +4,12 @@ import * as action from "../../redux/actions";
 // import CinemaBranch from "./cinemaBranch";
 import SuatChieu from "./suatchieu";
 class PickingPlace extends Component {
-
+    // constructor(props){
+    //     super(props);
+    //     this.state = {
+    //         brandLogo: ''
+    //     }
+    // }
     componentDidMount() {
         // Get API LaythongtinHeThongRap (BHD,CGV,CineStar,...)
         this.props.getListCinemaBrand();
@@ -40,7 +45,9 @@ class PickingPlace extends Component {
                             onClick={() => {
                                 this.props.getListBranch(item.maHeThongRap);
                                 this.props.getListMovieBrand(item.maHeThongRap, "GP01")
-
+                                this.setState({
+                                    brandLogo : item.logo
+                                })
                             }}
                         >
                             <img src={item.logo} width="50px" alt="" />
@@ -54,7 +61,7 @@ class PickingPlace extends Component {
     renderHTMLBranch = (listBranch) => {
         return listBranch.map((branch, index) => {
             return (
-                <li key={index} className="nav-item">
+                <li key={index} className="nav-item branch-item">
                     <a
 
                         className={`cinema-item nav-link ${index === 0 ? "active" : ""}`}
@@ -69,7 +76,7 @@ class PickingPlace extends Component {
                         />
                         <div className="cinema-item__detail">
                             <h5>{branch.tenCumRap}</h5>
-                            <span>{branch.diaChi}</span>
+                            <p>{branch.diaChi}</p>
                         </div>
                     </a>
 
@@ -94,6 +101,7 @@ class PickingPlace extends Component {
                         danhSachPhim = {danhSachPhim}
                         active={(index === 0 ? true : false)}
                         maCumRap={item.maCumRap}
+                        // logo = {this.state.brandLogo}
                         // listMovieBrand={listMovieBrand}
                     />
 
@@ -125,8 +133,6 @@ class PickingPlace extends Component {
     }
 
     render() {
-        // console.log("render");
-        // console.log(this.props.listCinemaBrand);
         return (
             <div className="picking-place">
                 <ul className="nav nav-pills container justify-content-center">
