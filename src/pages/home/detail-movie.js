@@ -8,7 +8,7 @@ class DetailMovie extends Component {
   componentDidMount() {
     $(function () {
       $(".chart").easyPieChart({
-        trackColor: false,
+        // trackColor: false,
         lineWidth: 10,
         barColor: "#7ED321",
         trackColor: "#3A3A3A",

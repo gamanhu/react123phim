@@ -18,7 +18,7 @@ const movieReducer = (state = initialState, action) => {
         // state.movie=action.movie;
         //     return {...state};
         case ActionTypes.ADD_MOVIE_SUCCESS:
-            let movie = [...state.listMovie, action.movie];
+            // let movie = [...state.listMovie, action.movie];
             state.listMovie = [];
             return { ...state };
         case ActionTypes.UPDATE_MOVIE_SUCCESS:

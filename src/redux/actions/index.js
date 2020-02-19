@@ -426,7 +426,7 @@ export const actOnDeleteUserAPI = (taiKhoan)=> {
     }
 }
 export const actUpdateImgAPI = (maPhim,data) => {
-    const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    // const adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
     return dispatch => {
         Axios({
             method:"POST",
