@@ -3,16 +3,35 @@ import Slider from 'react-slick';
 import PickingFast from "./picking-fast";
 import { connect } from "react-redux";
 import { actGetListMovieAPI } from "../../redux/actions/index.js";
+import TrailerModal from "./trailer-modal";
 import Movie from "./movie";
 
 class CatalougeFilm extends Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            openModal: false
+        }
+    }
     componentDidMount() {
         this.props.getListMovie();
     };
+
+    openModal = () => {
+        this.setState({
+            openModal:true
+        })
+    }
+    closeModal = () => {
+        this.setState({
+            openModal:false
+        })
+    }
+    
     renderHTML = () => {
         let { listMovie } = this.props;
         return listMovie.map((movie, index) => {
-            return <Movie key={index} movie={movie} />
+            return <Movie key={index} movie={movie} openModal={this.openModal}  />
         });
     };
     shiftItem = (arr, item) => {
@@ -30,6 +49,7 @@ class CatalougeFilm extends Component {
         return (
             <div className="selling-list container">
                 <PickingFast listMovie={this.props.listMovie} />
+                {/* <TrailerModal open={this.state.openModal} close={this.closeModal}/> */}
                 <ul className="nav nav-pills">
                     <li className="nav-item">
                         <a className="nav-link active" data-toggle="pill" href="#onSelling">
