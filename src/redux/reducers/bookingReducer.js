@@ -26,7 +26,7 @@ const initial = (state = initialState) => {
     }
         return { ...state };
 }
-initial();
+// initial();
 
 const bookingReducer = (state = initialState, action) => {
     switch (action.type) {
