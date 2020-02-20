@@ -46,7 +46,7 @@ class CatalougeFilm extends Component {
             slidesPerRow: 4,
             slidesToShow: 1,
         }
-        console.log(this.state);
+        // console.log(this.state);
         return (
             <div className="selling-list container">
                 <PickingFast listMovie={this.props.listMovie} />

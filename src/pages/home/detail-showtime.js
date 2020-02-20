@@ -8,7 +8,7 @@ export default class DetailShowtime extends Component {
       <div className="detail_Show_time">
         <div className="d-flex mt-4">
           <div>
-            <img src={this.props.logo} />
+            <img src={this.props.logo} alt=""/>
           </div>
           <div className="right">
             <p className="nameCinema">{this.props.name}</p>

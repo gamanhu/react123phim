@@ -7,7 +7,7 @@ import locationHeaderImg from "../img/location-header.png";
 import dropdownIconImg from "../img/dropdown-icon.png";
 import { connect } from "react-redux";
 function Navbar(props) {
-    console.log(props.isLogin);
+    // console.log(props.isLogin);
     // const handleSignOut = ()=>{
     //     localStorage.setItem("UserLogin","");
     //     return(

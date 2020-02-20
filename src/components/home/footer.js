@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+// import { NavLink } from 'react-router-dom';
 import appleIcon from "../../img/apple-logo.png";
 import androidIcon from "../../img/android-logo.png";
 import facebookIcon from "../../img/facebook-logo.png";
@@ -143,7 +143,9 @@ export default function Footer() {
     const renderList = (array) => {
         return array.map((item, index) => {
             return (
-                <a href="#a" key={index}><img className="iconConnect" title={item.title} src={item.path} alt={item.title} /></a>
+                <a href="#a" key={index}>
+                    <img className="iconConnect" title={item.title} src={item.path} alt={item.title} />
+                </a>
             )
         })
     }

@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, {  useState } from 'react';
 // import WithSelect from '../with-select';
-import {connect} from "react-redux";
+// import {connect} from "react-redux";
 // import { NavLink } from "react-router-dom";
 export default function PickingFast(props) {
     const [state, setState] = useState({
@@ -31,7 +31,7 @@ export default function PickingFast(props) {
 
         }
     }
-    console.log(props.listMovie);
+    // console.log(props.listMovie);
     return (
         <div className="selling-fast">
             <div className="selectPhim">
@@ -89,10 +89,10 @@ export default function PickingFast(props) {
     )
 }
 
-const mapDispatchToProps = dispatch => {
-    return {
-        getMovieInfo : ()=>{
+// const mapDispatchToProps = dispatch => {
+//     return {
+//         getMovieInfo : ()=>{
 
-        }
-    }
-}
+//         }
+//     }
+// }
