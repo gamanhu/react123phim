@@ -465,5 +465,26 @@ export const actUpdateImgAPI = (maPhim,data) => {
         })
     }
 }
+export const actTaoLichChieuAPI = (data) => {
+    let adminInfo = JSON.parse(localStorage.getItem("AdminLogin"));
+    return dispatch => {
+        Axios({
+            type:"POST",
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu`,
+            data,
+            headers: {
+                Authorization: `Bearer ${adminInfo.accessToken}`
+            }
+        })
+        .then(result=>{
+            alert("Tạo Lịch Chiếu Thành Công");
+
+        })
+        .catch(err=>{
+            alert('That bai');
+            console.log(err);
+        })
+    }
+}
 
 

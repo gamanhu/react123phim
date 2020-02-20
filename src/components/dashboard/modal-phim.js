@@ -111,7 +111,7 @@ function ModalPhim(props) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(state);
+        // console.log(state);
         if (props.movieEdit) {
             state.ngayKhoiChieu = FormatDate(state.ngayKhoiChieu);
             props.onEditPhim(state);
