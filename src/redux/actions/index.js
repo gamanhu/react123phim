@@ -210,7 +210,7 @@ export const actGetBoothInfoFailAPI = (maLichChieu)=>{
     return dispatch =>{
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
         })
         .then(result=>{
             console.log(result)
@@ -305,7 +305,7 @@ export const actOnEditPhimAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim`,
             data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -329,7 +329,7 @@ export const actOnAddPhimAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim`,
             data: data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -354,7 +354,7 @@ export const actOnDeletePhimAPI = (maPhim)=> {
     return dispatch => {
         Axios({
             method:"DELETE",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
             data: maPhim,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -377,7 +377,7 @@ export const actOnEditUserAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"PUT",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
             data: data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -401,7 +401,7 @@ export const actOnAddUserAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung`,
             data: data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -426,7 +426,7 @@ export const actOnDeleteUserAPI = (taiKhoan)=> {
     return dispatch => {
         Axios({
             method:"DELETE",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
             data: taiKhoan,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -448,7 +448,7 @@ export const actUpdateImgAPI = (maPhim,data) => {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim`,
             data,
             headers:{
                 'accept': 'application/json',
