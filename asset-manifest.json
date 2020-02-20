@@ -1,26 +1,29 @@
 {
   "files": {
-    "main.css": "/react123phim/static/css/main.4e12ee19.chunk.css",
-    "main.js": "/react123phim/static/js/main.4120778b.chunk.js",
-    "main.js.map": "/react123phim/static/js/main.4120778b.chunk.js.map",
+    "main.css": "/react123phim/static/css/main.517a66e7.chunk.css",
+    "main.js": "/react123phim/static/js/main.e33f1252.chunk.js",
+    "main.js.map": "/react123phim/static/js/main.e33f1252.chunk.js.map",
     "runtime-main.js": "/react123phim/static/js/runtime-main.cc27a6b6.js",
     "runtime-main.js.map": "/react123phim/static/js/runtime-main.cc27a6b6.js.map",
-    "static/css/2.3612df4c.chunk.css": "/react123phim/static/css/2.3612df4c.chunk.css",
-    "static/js/2.e4584e5e.chunk.js": "/react123phim/static/js/2.e4584e5e.chunk.js",
-    "static/js/2.e4584e5e.chunk.js.map": "/react123phim/static/js/2.e4584e5e.chunk.js.map",
+    "static/css/2.67546fc8.chunk.css": "/react123phim/static/css/2.67546fc8.chunk.css",
+    "static/js/2.4e71b6aa.chunk.js": "/react123phim/static/js/2.4e71b6aa.chunk.js",
+    "static/js/2.4e71b6aa.chunk.js.map": "/react123phim/static/js/2.4e71b6aa.chunk.js.map",
     "index.html": "/react123phim/index.html",
-    "precache-manifest.f10a04cfead15747fdd39eef3634e08b.js": "/react123phim/precache-manifest.f10a04cfead15747fdd39eef3634e08b.js",
+    "precache-manifest.6011a7f7bbf767609faff5daa7cab186.js": "/react123phim/precache-manifest.6011a7f7bbf767609faff5daa7cab186.js",
     "service-worker.js": "/react123phim/service-worker.js",
-    "static/css/2.3612df4c.chunk.css.map": "/react123phim/static/css/2.3612df4c.chunk.css.map",
-    "static/css/main.4e12ee19.chunk.css.map": "/react123phim/static/css/main.4e12ee19.chunk.css.map",
-    "static/js/2.e4584e5e.chunk.js.LICENSE": "/react123phim/static/js/2.e4584e5e.chunk.js.LICENSE",
-    "static/media/slick-theme.css": "/react123phim/static/media/slick.f97e3bbf.svg"
+    "static/css/2.67546fc8.chunk.css.map": "/react123phim/static/css/2.67546fc8.chunk.css.map",
+    "static/css/main.517a66e7.chunk.css.map": "/react123phim/static/css/main.517a66e7.chunk.css.map",
+    "static/js/2.4e71b6aa.chunk.js.LICENSE": "/react123phim/static/js/2.4e71b6aa.chunk.js.LICENSE",
+    "static/media/font-awesome.min.css": "/react123phim/static/media/fontawesome-webfont.fee66e71.woff",
+    "static/media/poster-dang-cap-nhat.jpg": "/react123phim/static/media/poster-dang-cap-nhat.720b9a92.jpg",
+    "static/media/slick-theme.css": "/react123phim/static/media/slick.f97e3bbf.svg",
+    "static/media/tix-biglogo.png": "/react123phim/static/media/tix-biglogo.7e305a9a.png"
   },
   "entrypoints": [
     "static/js/runtime-main.cc27a6b6.js",
-    "static/css/2.3612df4c.chunk.css",
-    "static/js/2.e4584e5e.chunk.js",
-    "static/css/main.4e12ee19.chunk.css",
-    "static/js/main.4120778b.chunk.js"
+    "static/css/2.67546fc8.chunk.css",
+    "static/js/2.4e71b6aa.chunk.js",
+    "static/css/main.517a66e7.chunk.css",
+    "static/js/main.e33f1252.chunk.js"
   ]
 }
