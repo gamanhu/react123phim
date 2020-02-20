@@ -6,7 +6,7 @@ export const actGetListMovieAPI = () => {
     return dispatch => {
         Axios({
             method: "GET",
-            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`
+            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`
 
         })
             .then(result => {
@@ -27,7 +27,7 @@ export const actGetMovieOnScreenListAPI = (maPhim) =>{
     return dispatch => {
         Axios({
             method: "GET",
-            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
             data: maPhim
         })
         .then(result => {
