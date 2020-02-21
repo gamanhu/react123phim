@@ -1,0 +1,118 @@
+#footer{
+    background-color: #222;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    color: #949494;
+    .title{
+        color: #fff;
+        font-size: 80%;
+        width: 100%;
+    }
+    .noPaddingLeft{
+        padding-left:0;
+    }
+    .fontSizeP a{
+        font-size: 12px!important;
+        font-weight: 700;
+        white-space: nowrap;
+        color: #949494;
+        display: block;
+        transition: all .2s;
+        line-height: 2.3;
+        text-decoration: none;
+        &:hover{
+            color:#fff;
+        }
+    }
+    .iconConnect{
+        border-radius: 50%;
+        height: 30px;
+        width: 30px;
+        margin-right: 15px;
+        background-color: #fff;
+        &:hover{
+            opacity: .7;
+        }
+    }
+    .linePartner{
+        margin-bottom: 15px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .rules{
+        float: left;
+        // clear:both;
+    }
+    @media screen and (max-width:992px){
+        .hideOnMobile{
+            display:none!important;
+        }
+
+    }
+    .textCenter{
+        text-align: center;
+    }
+    .title2{
+        width: 50%;
+        white-space: nowrap;
+        // display:inline-block;
+    }
+    .iconApp{
+        background: 0 0;
+        height: 30px;
+        width: auto;
+        margin: 5px;
+        cursor: pointer;
+    }
+    .hrFooter{
+        border-top: 1px solid #4a4a4a;
+    }
+    .imgFooter{
+        text-align: center;
+        padding: 0;
+    }
+    .infoFooter{
+        color: #fff;
+        white-space: nowrap;
+        font-size: 70%;
+        span{
+            display: block;
+            line-height: 1.8;
+            color: #949494;
+            font-size: 12px;
+            font-weight: 400;
+            &:first-child{
+                color: #fff;
+            }
+        }
+    }
+    .vngIcon{
+        width: 80px;
+        height: auto;
+    }
+    .Boco{
+        width: 130px;
+        float: right;
+    }
+}
+.block{
+    padding-left: 0;
+    padding-right: 0;
+}
+// .col-sm-4{
+//     flex: 0 0 33.333333%;
+//     max-width: 33.333333%;
+// }
+.col-xs-12{
+    width: 100%;
+}
+.mainMaxWidth{
+    max-width: 940px;
+    float: none;
+    margin: auto;
+    clear: both;
+}
+.row{
+    margin-left: 0;
+    margin-right: 0;
+}

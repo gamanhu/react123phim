@@ -285,6 +285,7 @@ class DetailMovie extends Component {
                     <iframe
                       width={370}
                       height={345}
+                      title="trailerMovie"
                       // sau /com phai co cum tu embed/ bo watchv=?
                       src={this.makeUrlEmeb(movie.trailer)}
                     ></iframe>

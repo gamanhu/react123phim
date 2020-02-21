@@ -150,7 +150,7 @@ function QuanLyUser(props) {
             setTotal(total.length);
             setLoading(true);
         }
-        console.log(props);
+        // console.log(props);
 
     }, [props]);
     const renderTable = (pagination,keyW) => {

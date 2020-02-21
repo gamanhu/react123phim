@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import Carousel1 from "../../img/carousel-1.jpg";
+import Carousel2 from "../../img/carousel-2.jpg";
+import Carousel3 from "../../img/carousel-3.jpg";
+import Carousel4 from "../../img/carousel-4.jpg";
+import Carousel5 from "../../img/carousel-5.jpg";
 
 export default class Carousel extends Component {
     render() {
@@ -17,19 +22,19 @@ export default class Carousel extends Component {
                     {/* The slideshow */}
                     <div className="carousel-inner">
                         <div className="carousel-item active">
-                            <img src="./img/carousel-1.jpg" width="100%" alt="Los Angeles" />
+                            <img src={Carousel1} width="100%" alt="Los Angeles" />
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/carousel-2.jpg" width="100%" alt="Chicago" />
+                            <img src={Carousel2} width="100%" alt="Chicago" />
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/carousel-3.jpg" width="100%" alt="New York" />
+                            <img src={Carousel3} width="100%" alt="New York" />
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/carousel-4.jpg" width="100%" alt="New York" />
+                            <img src={Carousel4} width="100%" alt="New York" />
                         </div>
                         <div className="carousel-item">
-                            <img src="./img/carousel-5.jpg" width="100%" alt="New York" />
+                            <img src={Carousel5} width="100%" alt="New York" />
                         </div>
                     </div>
                     {/* Left and right controls */}
