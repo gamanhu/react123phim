@@ -2,11 +2,13 @@ import * as ActionType from "../constants/action-types.js";
 import Axios from "axios";
 
 
+const ghpage = "https://cors-anywhere.herokuapp.com/"
+// const ghpage = ""
 export const actGetListMovieAPI = () => {
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`
 
         })
             .then(result => {
@@ -27,7 +29,7 @@ export const actGetMovieOnScreenListAPI = (maPhim) =>{
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
             data: maPhim
         })
         .then(result => {
@@ -43,7 +45,7 @@ export const actGetDetailMovie= (id)=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
         })
         .then(result=>{
             console.log(result);
@@ -61,7 +63,7 @@ export const actGetShowTimes= (maHeThongRap)=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
         })
         .then(result=>{
             console.log(result);
@@ -82,7 +84,7 @@ export const actGetListLogo= ()=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
         })
         .then(result=>{
             console.log(result);
@@ -102,7 +104,7 @@ export const actGetListCinemaBrandAPI = () => {
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
         })
             .then(result => {
                 dispatch({
@@ -121,7 +123,7 @@ export const actGetListBranchAPI = (maHeThongRap) => {
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
         })
         .then(result=>{
             dispatch({
@@ -140,7 +142,7 @@ export const actGetListMovieBrandAPI= (maHeThongRap,maNhom)=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${maNhom}`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${maNhom}`
         })
         .then(result=>{
             // console.log(result.data);
@@ -159,7 +161,7 @@ export const actLoginUser = (user,history) => {
     return dispatch =>  {
         Axios({
             method:"POST",
-            url:`https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
+            url:`${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
             data:user
         })
         .then(result=>{
@@ -188,7 +190,7 @@ export const actGetBoothInfoAPI = (maLichChieu)=>{
     return dispatch =>{
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
         })
         .then(result=>{
             if(result.data){
@@ -231,7 +233,7 @@ export const actDatVeAPI = (thongTinDatVe)=> {
     return dispatch=>{
         Axios({
             method: "POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
             data: thongTinDatVe,
             headers: {
                 Authorization:`Bearer ${userInfo.accessToken}`
@@ -256,7 +258,7 @@ export const actLoginAdmin = (user,history) => {
     return dispatch =>  {
         Axios({
             method:"POST",
-            url:`https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
+            url:`${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
             data:user
         })
         .then(result=>{
@@ -285,7 +287,7 @@ export const actGetListUserAPI = () => {
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01`
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01`
 
         })
             .then(result => {
@@ -305,7 +307,7 @@ export const actOnEditPhimAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhim`,
             data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -329,7 +331,7 @@ export const actOnAddPhimAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/ThemPhim`,
             data: data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -354,7 +356,7 @@ export const actOnDeletePhimAPI = (maPhim)=> {
     return dispatch => {
         Axios({
             method:"DELETE",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maPhim}`,
             data: maPhim,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -377,7 +379,7 @@ export const actOnEditUserAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"PUT",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/CapNhatThongTinNguoiDung`,
             data: data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -401,7 +403,7 @@ export const actOnAddUserAPI = (data)=> {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/ThemNguoiDung`,
             data: data,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -426,7 +428,7 @@ export const actOnDeleteUserAPI = (taiKhoan)=> {
     return dispatch => {
         Axios({
             method:"DELETE",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/XoaNguoiDung?TaiKhoan=${taiKhoan}`,
             data: taiKhoan,
             headers: {
                 Authorization:`Bearer ${adminInfo.accessToken}`
@@ -448,7 +450,7 @@ export const actUpdateImgAPI = (maPhim,data) => {
     return dispatch => {
         Axios({
             method:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/UploadHinhAnhPhim`,
             data,
             headers:{
                 'accept': 'application/json',
@@ -470,7 +472,7 @@ export const actTaoLichChieuAPI = (data) => {
     return dispatch => {
         Axios({
             type:"POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu`,
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu`,
             data,
             headers: {
                 Authorization: `Bearer ${adminInfo.accessToken}`

@@ -10,84 +10,84 @@ export default function Footer() {
 
     const listConnect = [
         {
-            path: "../../img/cgv.png",
+            path: "./img/cgv.png",
             title:"CGV"
         },
         {
-            path: "../../img/galaxycine.png",
+            path: "./img/galaxycine.png",
             title:"Galaxy"
         },
         {
-            path: "../../img/bhd.png",
+            path: "./img/bhd.png",
             title:"BHD"
         },
         {
-            path: "../../img/cinestar.png",
+            path: "./img/cinestar.png",
             title:"CineStar"
         },
         {
-            path: "../../img/lotte.png",
+            path: "./img/lotte.png",
             title:"Lotte"
 
         },
         {
-            path: "../../img/megags.png",
+            path: "./img/megags.png",
             title:"MegaGs"
         },
         {
-            path: "../../img/beta.jpg",
+            path: "./img/beta.jpg",
             title:"Beta"
         },
         {
-            path: "../../img/dongdacinema.png",
+            path: "./img/dongdacinema.png",
             title:"Đống Đa"
         },
         {
-            path: "../../img/TOUCH.png",
+            path: "./img/TOUCH.png",
             title:"Touch"
         },
         {
-            path: "../../img/cnx.jpg",
+            path: "./img/cnx.jpg",
             title:"Cinemax"
         },
         {
-            path: "../../img/STARLIGHT.png",
+            path: "./img/STARLIGHT.png",
             title:"Starlight"
         },
         {
-            path: "../../img/dcine.png",
+            path: "./img/dcine.png",
             title:"dcine"
         },
         {
-            path: "../../img/zalopay_icon.png",
+            path: "./img/zalopay_icon.png",
             title:"Zalo Pay"
         },
         {
-            path: "../../img/payoo.jpg",
+            path: "./img/payoo.jpg",
             title:"Payoo"
         },
         {
-            path: "../../img/VCB.png",
+            path: "./img/VCB.png",
             title:"Vietcombank"
         },
         {
-            path: "../../img/AGRIBANK.png",
+            path: "./img/AGRIBANK.png",
             title:"Agribank"
         },
         {
-            path: "../../img/VIETTINBANK.png",
+            path: "./img/VIETTINBANK.png",
             title:"Vietinbank"
         },
         {
-            path: "../../img/IVB.png",
+            path: "./img/IVB.png",
             title:"IviBank"
         },
         {
-            path: "../../img/123go.png",
+            path: "./img/123go.png",
             title:"123go"
         },
         {
-            path: "../../img/laban.png",
+            path: "./img/laban.png",
             title:"La Bàn"
         },
     ];
