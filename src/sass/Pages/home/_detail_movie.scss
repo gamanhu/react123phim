@@ -13,17 +13,8 @@
         .right {
           text-align: center;
           padding: 75px 0 75px 220px;
-          .chart {
-            position: relative;
-            span {
-              position: absolute;
-              top: 48%;
-              left: 50%;
-              transform: translate(-50%, -48%);
-              font-size: 3rem;
-            }
-          }
           .star {
+            padding-top: 10px ;
             i {
               font-size: 1.2rem;
             }
