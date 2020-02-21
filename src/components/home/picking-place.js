@@ -134,7 +134,7 @@ class PickingPlace extends Component {
 
     render() {
         return (
-            <div className="picking-place">
+            <div className="picking-place" id="listbranch">
                 <ul className="nav nav-pills container justify-content-center">
                     {this.renderCinemaBrand(this.props.listCinemaBrand)}
                 </ul>

@@ -1,5 +1,5 @@
 import React from 'react';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import appleIcon from "../../img/apple-logo.png";
 import androidIcon from "../../img/android-logo.png";
 import facebookIcon from "../../img/facebook-logo.png";
@@ -160,6 +160,7 @@ export default function Footer() {
                             <div className="col-sm-6 col-xs-6 rules noPaddingLeft fontSizeP hideOnMobile">
                                 <a href="#a">FAQ</a>
                                 <a href="#a">Brand Guidelines</a>
+                                <NavLink to="/dashboard">Dashboard</NavLink>
                             </div>
                             <div className="col-sm-6 col-xs-12 rules noPaddingLeft fontSizeP">
                                 <a href="#a">Thỏa thuận sử dụng</a>

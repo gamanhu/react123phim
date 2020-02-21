@@ -42,12 +42,12 @@ function Navbar(props) {
                     >
                         <ul className="navbar-nav navbar-1">
                             <li className="nav-item">
-                                <a className="nav-link" href="#a">
+                                <a className="nav-link" href="#catalouge-film">
                                     Lịch Chiếu
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#a">
+                                <a className="nav-link" href="#listbranch">
                                     Cụm Rạp
                                 </a>
                             </li>
