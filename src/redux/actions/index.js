@@ -6,7 +6,7 @@ export const actGetListMovieAPI = () => {
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayDanhSachPhim?maNhom=GP01`
 
         })
             .then(result => {
@@ -27,7 +27,7 @@ export const actGetMovieOnScreenListAPI = (maPhim) =>{
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuPhim?MaPhim=${maPhim}`,
             data: maPhim
         })
         .then(result => {
@@ -43,7 +43,7 @@ export const actGetDetailMovie= (id)=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
         })
         .then(result=>{
             console.log(result);
@@ -61,7 +61,7 @@ export const actGetShowTimes= (maHeThongRap)=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
         })
         .then(result=>{
             console.log(result);
@@ -82,7 +82,7 @@ export const actGetListLogo= ()=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
         })
         .then(result=>{
             console.log(result);
@@ -102,7 +102,7 @@ export const actGetListCinemaBrandAPI = () => {
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinHeThongRap`
         })
             .then(result => {
                 dispatch({
@@ -121,7 +121,7 @@ export const actGetListBranchAPI = (maHeThongRap) => {
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
         })
         .then(result=>{
             dispatch({
@@ -140,7 +140,7 @@ export const actGetListMovieBrandAPI= (maHeThongRap,maNhom)=>{
     return dispatch => {
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${maNhom}`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinLichChieuHeThongRap?maHeThongRap=${maHeThongRap}&maNhom=${maNhom}`
         })
         .then(result=>{
             // console.log(result.data);
@@ -159,7 +159,7 @@ export const actLoginUser = (user,history) => {
     return dispatch =>  {
         Axios({
             method:"POST",
-            url:`https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
             data:user
         })
         .then(result=>{
@@ -188,7 +188,7 @@ export const actGetBoothInfoAPI = (maLichChieu)=>{
     return dispatch =>{
         Axios({
             method:"GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
         })
         .then(result=>{
             if(result.data){
@@ -210,7 +210,7 @@ export const actGetBoothInfoFailAPI = (maLichChieu)=>{
     return dispatch =>{
         Axios({
             method:"GET",
-            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
+            url: `api/QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${maLichChieu}`
         })
         .then(result=>{
             console.log(result)
@@ -231,7 +231,7 @@ export const actDatVeAPI = (thongTinDatVe)=> {
     return dispatch=>{
         Axios({
             method: "POST",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe`,
             data: thongTinDatVe,
             headers: {
                 Authorization:`Bearer ${userInfo.accessToken}`
@@ -256,7 +256,7 @@ export const actLoginAdmin = (user,history) => {
     return dispatch =>  {
         Axios({
             method:"POST",
-            url:`https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
+            url:`http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/DangNhap`,
             data:user
         })
         .then(result=>{
@@ -285,7 +285,7 @@ export const actGetListUserAPI = () => {
     return dispatch => {
         Axios({
             method: "GET",
-            url: `https://cors-anywhere.herokuapp.com/http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01`
+            url: `http://movie0706.cybersoft.edu.vn/api/QuanLyNguoiDung/LayDanhSachNguoiDung?MaNhom=GP01`
 
         })
             .then(result => {
