@@ -1,19 +1,24 @@
 {
   "files": {
-    "main.css": "/react123phim/static/css/main.517a66e7.chunk.css",
-    "main.js": "/react123phim/static/js/main.5020a98c.chunk.js",
-    "main.js.map": "/react123phim/static/js/main.5020a98c.chunk.js.map",
+    "main.css": "/react123phim/static/css/main.f6b3a36a.chunk.css",
+    "main.js": "/react123phim/static/js/main.af5c173c.chunk.js",
+    "main.js.map": "/react123phim/static/js/main.af5c173c.chunk.js.map",
     "runtime-main.js": "/react123phim/static/js/runtime-main.cc27a6b6.js",
     "runtime-main.js.map": "/react123phim/static/js/runtime-main.cc27a6b6.js.map",
     "static/css/2.67546fc8.chunk.css": "/react123phim/static/css/2.67546fc8.chunk.css",
-    "static/js/2.4e71b6aa.chunk.js": "/react123phim/static/js/2.4e71b6aa.chunk.js",
-    "static/js/2.4e71b6aa.chunk.js.map": "/react123phim/static/js/2.4e71b6aa.chunk.js.map",
+    "static/js/2.c5380ec2.chunk.js": "/react123phim/static/js/2.c5380ec2.chunk.js",
+    "static/js/2.c5380ec2.chunk.js.map": "/react123phim/static/js/2.c5380ec2.chunk.js.map",
     "index.html": "/react123phim/index.html",
-    "precache-manifest.0d400eef353feb1aa3dda12a136ae3b4.js": "/react123phim/precache-manifest.0d400eef353feb1aa3dda12a136ae3b4.js",
+    "precache-manifest.a123770f09bf2e3e802ca8e92a08b9dd.js": "/react123phim/precache-manifest.a123770f09bf2e3e802ca8e92a08b9dd.js",
     "service-worker.js": "/react123phim/service-worker.js",
     "static/css/2.67546fc8.chunk.css.map": "/react123phim/static/css/2.67546fc8.chunk.css.map",
-    "static/css/main.517a66e7.chunk.css.map": "/react123phim/static/css/main.517a66e7.chunk.css.map",
-    "static/js/2.4e71b6aa.chunk.js.LICENSE": "/react123phim/static/js/2.4e71b6aa.chunk.js.LICENSE",
+    "static/css/main.f6b3a36a.chunk.css.map": "/react123phim/static/css/main.f6b3a36a.chunk.css.map",
+    "static/js/2.c5380ec2.chunk.js.LICENSE": "/react123phim/static/js/2.c5380ec2.chunk.js.LICENSE",
+    "static/media/carousel-1.jpg": "/react123phim/static/media/carousel-1.16aa16d5.jpg",
+    "static/media/carousel-2.jpg": "/react123phim/static/media/carousel-2.545a75d6.jpg",
+    "static/media/carousel-3.jpg": "/react123phim/static/media/carousel-3.ba1e2486.jpg",
+    "static/media/carousel-4.jpg": "/react123phim/static/media/carousel-4.a39ab4de.jpg",
+    "static/media/carousel-5.jpg": "/react123phim/static/media/carousel-5.79cb5c4f.jpg",
     "static/media/font-awesome.min.css": "/react123phim/static/media/fontawesome-webfont.fee66e71.woff",
     "static/media/poster-dang-cap-nhat.jpg": "/react123phim/static/media/poster-dang-cap-nhat.720b9a92.jpg",
     "static/media/slick-theme.css": "/react123phim/static/media/slick.f97e3bbf.svg",
@@ -22,8 +27,8 @@
   "entrypoints": [
     "static/js/runtime-main.cc27a6b6.js",
     "static/css/2.67546fc8.chunk.css",
-    "static/js/2.4e71b6aa.chunk.js",
-    "static/css/main.517a66e7.chunk.css",
-    "static/js/main.5020a98c.chunk.js"
+    "static/js/2.c5380ec2.chunk.js",
+    "static/css/main.f6b3a36a.chunk.css",
+    "static/js/main.af5c173c.chunk.js"
   ]
 }

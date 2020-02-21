@@ -1,31 +1,51 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "95133e0ac634e1ca30657ab7abcd91f2",
+    "revision": "2e959a5bac4b3d032d589bd3a460977a",
     "url": "/react123phim/index.html"
   },
   {
-    "revision": "312cc243f8d409f2f5f3",
+    "revision": "b81ecad8f9bd66a7e30d",
     "url": "/react123phim/static/css/2.67546fc8.chunk.css"
   },
   {
-    "revision": "946b668e7396f4566f28",
-    "url": "/react123phim/static/css/main.517a66e7.chunk.css"
+    "revision": "8fc6e2681377b86d3fce",
+    "url": "/react123phim/static/css/main.f6b3a36a.chunk.css"
   },
   {
-    "revision": "312cc243f8d409f2f5f3",
-    "url": "/react123phim/static/js/2.4e71b6aa.chunk.js"
+    "revision": "b81ecad8f9bd66a7e30d",
+    "url": "/react123phim/static/js/2.c5380ec2.chunk.js"
   },
   {
     "revision": "51dd16ee26cc2f982c8cf716971c997a",
-    "url": "/react123phim/static/js/2.4e71b6aa.chunk.js.LICENSE"
+    "url": "/react123phim/static/js/2.c5380ec2.chunk.js.LICENSE"
   },
   {
-    "revision": "946b668e7396f4566f28",
-    "url": "/react123phim/static/js/main.5020a98c.chunk.js"
+    "revision": "8fc6e2681377b86d3fce",
+    "url": "/react123phim/static/js/main.af5c173c.chunk.js"
   },
   {
     "revision": "3a91227cf1be24c44459",
     "url": "/react123phim/static/js/runtime-main.cc27a6b6.js"
+  },
+  {
+    "revision": "16aa16d58eb8a203ba409c6a29a4779d",
+    "url": "/react123phim/static/media/carousel-1.16aa16d5.jpg"
+  },
+  {
+    "revision": "545a75d6d1f3c7c765d22fbffefa1d1d",
+    "url": "/react123phim/static/media/carousel-2.545a75d6.jpg"
+  },
+  {
+    "revision": "ba1e2486ab303b021a9758297adeb604",
+    "url": "/react123phim/static/media/carousel-3.ba1e2486.jpg"
+  },
+  {
+    "revision": "a39ab4de3a8c3fc1aa5631eee65af033",
+    "url": "/react123phim/static/media/carousel-4.a39ab4de.jpg"
+  },
+  {
+    "revision": "79cb5c4f3cd3910399daf7af6cfd5e9b",
+    "url": "/react123phim/static/media/carousel-5.79cb5c4f.jpg"
   },
   {
     "revision": "674f50d287a8c48dc19ba404d20fe713",
