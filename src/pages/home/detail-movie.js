@@ -1,22 +1,22 @@
 import React, { Component } from "react";
-import "../../../node_modules/easy-pie-chart-master/dist/jquery.easypiechart";
+// import "../../../node_modules/easy-pie-chart-master/dist/jquery.easypiechart";
 import { connect } from "react-redux";
 import * as action from "../../redux/actions/index";
 import DetailShowtime from "./detail-showtime";
 
-import $ from "jquery";
+// import $ from "jquery";
 class DetailMovie extends Component {
   componentDidMount() {
-    $(function() {
-      $(".chart").easyPieChart({
-        // trackColor: false,
-        lineWidth: 10,
-        barColor: "#7ED321",
-        trackColor: "#3A3A3A",
-        size: 130,
-        scaleLength: false
-      });
-    });
+    // $(function() {
+    //   $(".chart").easyPieChart({
+    //     // trackColor: false,
+    //     lineWidth: 10,
+    //     barColor: "#7ED321",
+    //     trackColor: "#3A3A3A",
+    //     size: 130,
+    //     scaleLength: false
+    //   });
+    // });
     let id = this.props.match.params.id;
     this.props.gettimeMovie(id);
     this.props.getListLogo();
