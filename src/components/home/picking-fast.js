@@ -2,15 +2,28 @@ import React, {  useState } from 'react';
 // import WithSelect from '../with-select';
 // import {connect} from "react-redux";
 // import { NavLink } from "react-router-dom";
-export default function PickingFast(props) {
+// import * as action from "../../redux/actions";
+ function PickingFast(props) {
     const [state, setState] = useState({
         Phim: '',
-        onOpenPhim:false
+        onOpenPhim:false,
+        // rapPhim:'',
+        // onOpenRap: false,
     });
     const chonPhim = (tenPhim,maPhim) => {
+        props.getMovieInfo(maPhim);
         setState({
+            ...state,
             Phim: tenPhim,
-        })
+            onOpenPhim: false
+        });
+        // if(props.movieOnScreenInfo){
+        //     setState({
+        //         ...state,
+        //         onOpenRap: true,
+        //     })
+        // }
+    
     };
     const selectOption = (onOpen) =>{
         setState({
@@ -88,7 +101,11 @@ export default function PickingFast(props) {
         </div>
     )
 }
-
+// const mapStateToProps = state =>{
+//     return {
+//         movieOnScreenInfo: state.movieReducer.movieOnScreenInfo,
+//     }
+// }
 // const mapDispatchToProps = dispatch => {
 //     return {
 //         getMovieInfo : ()=>{
@@ -96,3 +113,5 @@ export default function PickingFast(props) {
 //         }
 //     }
 // }
+
+// export default connect (mapStateToProps, mapDispatchToProps)(PickingFast);

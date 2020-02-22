@@ -2,8 +2,8 @@ import * as ActionType from "../constants/action-types.js";
 import Axios from "axios";
 
 
-const ghpage = "https://cors-anywhere.herokuapp.com/"
-// const ghpage = ""
+// const ghpage = "https://cors-anywhere.herokuapp.com/"
+const ghpage = ""
 export const actGetListMovieAPI = () => {
     return dispatch => {
         Axios({
@@ -41,6 +41,24 @@ export const actGetMovieOnScreenListAPI = (maPhim) =>{
     }
 }
 //Huy viet 
+export const actGetDetailMovie= (id)=>{
+    return dispatch => {
+        Axios({
+            method:"GET",
+            url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyPhim/LayThongTinPhim?MaPhim=${id}`
+        })
+        .then(result=>{
+            console.log(result);
+            dispatch({
+                type:ActionType.GET_DETAIL_MOVIE,
+                movie : result.data
+            });
+        })
+        .catch(err=>{
+            console.log(err);
+        })
+    }
+}
 export const actGetDetailMovie= (id)=>{
     return dispatch => {
         Axios({
