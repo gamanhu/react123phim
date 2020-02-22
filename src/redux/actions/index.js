@@ -2,8 +2,8 @@ import * as ActionType from "../constants/action-types.js";
 import Axios from "axios";
 
 
-const ghpage = "https://cors-anywhere.herokuapp.com/"
-// const ghpage = ""
+// const ghpage = "https://cors-anywhere.herokuapp.com/"
+const ghpage = ""
 export const actGetListMovieAPI = () => {
     return dispatch => {
         Axios({
