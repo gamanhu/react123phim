@@ -33,7 +33,12 @@ export const actGetMovieOnScreenListAPI = (maPhim) =>{
             data: maPhim
         })
         .then(result => {
-            console.log(result);
+            // console.log(result.data);
+            dispatch({
+                type: ActionType.GET_MOVIE_ONSCREEN,
+                movieOnScreenInfo: result.data
+
+            })
         })
         .catch (err =>{
             console.log(err);
@@ -66,7 +71,7 @@ export const actGetShowTimes= (maHeThongRap)=>{
             url: `${ghpage}http://movie0706.cybersoft.edu.vn/api/QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${maHeThongRap}`
         })
         .then(result=>{
-            console.log(result);
+            // console.log(result);
             dispatch({
                 type:ActionType.GET_CINEMA,
                 danhSachCacRap : result.data
