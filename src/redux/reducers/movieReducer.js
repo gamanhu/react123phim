@@ -5,7 +5,11 @@ let initialState = {
     movie: {},
     danhSachCacRap: [],
     listLogo : [],
-    trailerSrc: ''
+    trailerSrc: '',
+    movieOnScreenInfo: [],
+    branchHaveMovie: [],
+    lichChieuPhim: [],
+
 
 
 };
@@ -58,7 +62,15 @@ const movieReducer = (state = initialState, action) => {
             let trailerSrc = action.trailer;
             state.trailerSrc = trailerSrc
             return {...state};
-
+        case ActionTypes.GET_MOVIE_ONSCREEN:
+            let movieOnScreenInfo = action.movieOnScreenInfo;
+            let brandHaveMovie = movieOnScreenInfo.heThongRapChieu;
+            let branchHaveMovie = brandHaveMovie.map(item=> item.cumRapChieu);
+            let lichChieuPhim = branchHaveMovie.map(item=> item.map(item2=>item2.lichChieuPhim) );
+            state.movieOnScreenInfo= action.movieOnScreenInfo;
+            state.branchHaveMovie = branchHaveMovie;
+            state.lichChieuPhim = lichChieuPhim;    
+            return {...state};
         default:
             return { ...state };
     }
