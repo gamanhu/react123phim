@@ -14,7 +14,7 @@ import Badge from '@material-ui/core/Badge';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import NotificationsIcon from '@material-ui/icons/Notifications';
-import ThongKe from "../../components/dashboard/thongke";
+// import ThongKe from "../../components/dashboard/thongke";
 import { connect } from "react-redux";
 import {ListFunction,listFunction} from "../../components/dashboard/listfunction";
 const drawerWidth = 240;

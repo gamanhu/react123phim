@@ -8,6 +8,8 @@ import ListItemText from '@material-ui/core/ListItemText';
 import ThongKe from "./thongke";
 import QuanLyPhim from "./quan-ly-phim";
 import QuanLyUser from "./quan-ly-user";
+import QuanLyLichChieu from "./quan-ly-lich-chieu";
+import EventIcon from '@material-ui/icons/Event';
 
 const listFunction = [
     {
@@ -24,6 +26,11 @@ const listFunction = [
         name: "Quản lý Người dùng",
         icon: AccountBoxIcon,
         Component: QuanLyUser,
+    },
+    {
+        name: "Lịch Chiếu Phim",
+        icon: EventIcon,
+        Component: QuanLyLichChieu,
     },
 ]
 function ListFunction(props) {

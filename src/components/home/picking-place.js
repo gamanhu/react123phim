@@ -134,17 +134,17 @@ class PickingPlace extends Component {
 
     render() {
         return (
-            <div className="picking-place">
-                <ul className="nav nav-pills container justify-content-center">
+            <div className="picking-place" id="pickBrand">
+                <ul className="nav nav-pills container justify-content-center" id="listBrands">
                     {this.renderCinemaBrand(this.props.listCinemaBrand)}
                 </ul>
                 <div className="tab-content">
                     <div className="tab-pane container fade active show " id={`${this.props.brandName}`}>
                         {/* <div className="advertisment" width="10%"></div> */}
-                        <ul className=" nav nav-pills list-cinemas">
+                        <ul className=" nav nav-pills list-cinemas" id="listBranches">
                             {this.renderHTMLBranch(this.props.listBranch)}
                         </ul>
-                        <div className="list-movies tab-content">
+                        <div className="list-movies tab-content" id="listMovies">
                             {this.renderListFilm(this.props.listMovieBrand[0], this.props.listBranchHaveMovie[0])}
                         </div>
                         <div className="clear" />

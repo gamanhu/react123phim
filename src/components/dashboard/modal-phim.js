@@ -1,12 +1,12 @@
 import React from 'react';
 import { makeStyles } from "@material-ui/core/styles";
-import { Modal, Typography, FormControl, Input, InputLabel, Divider, Button, TextField } from '@material-ui/core';
+import { Modal, Typography, FormControl, Input, InputLabel, Divider, Button,  } from '@material-ui/core';
 import {
     MuiPickersUtilsProvider,
-    KeyboardTimePicker,
+    // KeyboardTimePicker,
     KeyboardDatePicker,
 } from '@material-ui/pickers';
-import Grid from '@material-ui/core/Grid';
+// import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 // import DateFnsUtils from '@date-io/date-fns';
 import * as action from "../../redux/actions";
@@ -111,7 +111,7 @@ function ModalPhim(props) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(state);
+        // console.log(state);
         if (props.movieEdit) {
             state.ngayKhoiChieu = FormatDate(state.ngayKhoiChieu);
             props.onEditPhim(state);

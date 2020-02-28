@@ -1,6 +1,6 @@
 import React,{useEffect} from 'react';
 import {NavLink} from "react-router-dom";
-import * as action from "../../redux/actions";
+// import * as action from "../../redux/actions";
 import { connect } from "react-redux";
  function SuatChieu(props) {
 
@@ -40,7 +40,7 @@ import { connect } from "react-redux";
                                             key={index} 
                                             to={`/booking/${item.maLichChieu}`} 
                                             onClick={()=>handleOnClick(item.maLichChieu)} >
-                                                <span>{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</span>
+                                                <span>{new Date(item.ngayChieuGioChieu).getHours() + ":" + new Date(item.ngayChieuGioChieu).getMinutes() }</span>
                                             </NavLink>
                                         )
                                     }

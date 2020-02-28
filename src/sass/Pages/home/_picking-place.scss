@@ -45,6 +45,7 @@
     }
   }
   .tab-content {
+    width: 100%;
     .tab-pane {
       padding: 0;
       // justify-content: center;
@@ -52,6 +53,7 @@
       width: 100%;
       display: inline-block;
       align-items: center;
+      flex-direction: column;
       // .advertisment {
       //   // width: 10%;
       //   // float: left;
@@ -191,6 +193,7 @@
         position: relative;
         overflow-x: hidden;
         overflow-y: scroll;
+        
         &::-webkit-scrollbar-track {
           border: none;
           padding: 2px 0;
@@ -268,7 +271,7 @@
                 font-weight: 700;
               }
               a {
-                width: calc(25% - 10px);
+                width: calc(25% - 45px);
                 float: left;
                 font-family: "SF Medium";
                 font-size: 14px;
@@ -283,9 +286,9 @@
                 border-radius: 7px;
                 color: #9b9b9b;
                 border: 1px solid #e4e4e4;
-                // &:last-child{
-                //   clear:both;
-                // }
+                @media screen and (max-width:992px){
+                  width: calc(25% - 10px);
+                }
                 span {
                   font-family: "SF Medium";
                   font-size: 18px;
@@ -302,6 +305,82 @@
       }
 
       // width: 100%;
+    }
+  }
+}
+#pickBrand{
+  #listBrands{
+    @media screen and (max-width:992px){
+      max-width: 100%;
+    }
+    @media screen and (max-width:992px){
+      width: 330px;
+      .nav-item{
+        border-bottom: solid rgba(51, 51, 51, 0.5) 1px;
+        &:nth-child(3){
+          border-right: solid rgba(51, 51, 51, 0.5) 1px;
+          &::before {
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 50%;
+            height: 70%;
+            width: 1px;
+            transform: translateY(-50%);
+            // border-bottom: 1px solid #fff;
+            background-color: rgba(255, 255, 255, 0);
+        }}
+        &:nth-child(4){
+          border-left: solid rgba(51, 51, 51, 0.5) 1px;
+          border-top: none;
+          border-bottom: none;
+        }
+        &:nth-child(5){
+          // border-left: solid rgba(51, 51, 51, 0.5) 1px;
+          border-right: none;
+          border-top: none;
+          border-bottom: none;
+        }
+        &:last-child{
+          border-bottom: none;
+          border-top: none;
+          border-left: none;
+        }
+      }
+    }
+  }
+  #listBranches{
+    @media screen and (max-width:992px){
+      margin-left: 5%;
+      .branch-item{
+        padding: 7px;
+        .cinema-item{
+          display: flex;
+          .cinema-item__detail{
+            // padding-left: 2px;
+            // display:flex;
+            // float:left;
+            h5{
+              display:inline-block;
+              height: 100px;
+              overflow-y: hidden;
+            }
+            p{
+              display: none;
+            }
+          }
+        }
+      }
+    }
+    @media screen and (max-width:768px){
+      margin-left: 3%;
+    }
+  }
+  #listMovies{
+    @media screen and (max-width:992px){
+      // width: calc(100% - 32% - 92px);
+      width: 65%;
+      
     }
   }
 }
