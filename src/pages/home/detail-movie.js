@@ -1,22 +1,20 @@
 import React, { Component } from "react";
 // import "../../../node_modules/easy-pie-chart-master/dist/jquery.easypiechart";
 import { connect } from "react-redux";
+import { CircularProgressbar,buildStyles  } from 'react-circular-progressbar';
 import * as action from "../../redux/actions/index";
+import 'react-circular-progressbar/dist/styles.css';
 import DetailShowtime from "./detail-showtime";
 
 // import $ from "jquery";
 class DetailMovie extends Component {
   componentDidMount() {
-    // $(function() {
-    //   $(".chart").easyPieChart({
-    //     // trackColor: false,
-    //     lineWidth: 10,
-    //     barColor: "#7ED321",
-    //     trackColor: "#3A3A3A",
-    //     size: 130,
-    //     scaleLength: false
-    //   });
-    // });
+
+    $(document).ready(function(){
+      $(this).scrollTop(0);
+  });
+   
+
     let id = this.props.match.params.id;
     this.props.gettimeMovie(id);
     this.props.getListLogo();
@@ -103,9 +101,17 @@ class DetailMovie extends Component {
       return str;
     }  
   }
+  //Render start following rate
+  renderStar = (rate) =>{
+    let length = rate/10/2;
+    var randoms = Array.from({length: length}, () => Math.floor(Math.random() * 10));
+    return randoms.map((item)=>{
+      return  <i className="fas fa-star" style={{ color: "#FB4226" }} />
+    })
+  }
   render() {
     let { movie,danhSachCacRap,listLogo } = this.props;
-    // let rate = (movie.danhGia*100)/5;
+    let rate = (movie.danhGia*100)/5;
     return (
       <div
         className="detail-movie"
@@ -137,26 +143,22 @@ class DetailMovie extends Component {
                   </span>{" "}
                   <span>{movie.tenPhim}</span>
                 </p>
-                <p>120 phút - 4.0 IMDb - 2D/Digital</p>
+                <p>120 phút - {`${rate/10/2}.${rate%10}`} IMDb - 2D/Digital</p>
                 <button type="button" className="btn btn-danger">
                   Mua vé
                 </button>
               </div>
               <div className="right">
-                <div
-                  className="chart"
-                  data-percent={80}
-                  data-scale-color="#ffb400"
-                >
-                  <span>4.0</span>
-                  {/* <span>{rate/10 + '.' + rate%10}</span> */}
-                </div>
+                <CircularProgressbar value={rate} text={`${rate/10/2}.${rate%10}`} strokeWidth={6} styles={buildStyles({
+                  strokeLinecap: 'butt',
+                  textSize: '23px',
+                  pathColor: `#c82333`,
+                  textColor: '#fff',
+                  trailColor: '#d6d6d6',
+                  backgroundColor: '#c82333',
+                })}/>
                 <div className="star">
-                  <i className="fas fa-star" style={{ color: "#FB4226" }} />
-                  <i className="fas fa-star" style={{ color: "#FB4226" }} />
-                  <i className="fas fa-star" style={{ color: "#FB4226" }} />
-                  <i className="fas fa-star" style={{ color: "#FB4226" }} />
-                  <i className="fas fa-star" style={{ color: "#FB4226" }} />
+                  {this.renderStar(rate)}
                 </div>
               </div>
             </div>

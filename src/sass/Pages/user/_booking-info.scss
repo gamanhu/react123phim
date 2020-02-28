@@ -151,3 +151,10 @@
         outline:none;
     }
 }
+
+@media only screen and (max-width:768px){
+    .right__content{
+      width: 100%;
+      position: relative;
+    }
+  }
