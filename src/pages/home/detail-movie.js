@@ -5,6 +5,7 @@ import { CircularProgressbar,buildStyles  } from 'react-circular-progressbar';
 import * as action from "../../redux/actions/index";
 import 'react-circular-progressbar/dist/styles.css';
 import DetailShowtime from "./detail-showtime";
+import $ from "jquery";
 
 // import $ from "jquery";
 class DetailMovie extends Component {
