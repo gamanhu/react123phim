@@ -39,7 +39,6 @@
     .seats__position {
       // height: 400px;
       text-align: center;
-      
       .seat__row{
         .row__name{
           display: inline-block;
@@ -87,20 +86,18 @@
             display: block;
             width:20px;
             margin: 0 auto;
-            
         }
         span{
             text-align: center;
             font-size: 13px;
             font-weight: 500;
-            
         }
         
       }
     }
   }
-  
   .clear {
     clear: both;
   }
+  
   
