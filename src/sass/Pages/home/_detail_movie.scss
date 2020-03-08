@@ -9,14 +9,23 @@
         display: flex;
         .center {
           padding: 75px 20px;
+          font-weight: 600;
+          .toLichChieu{
+            text-decoration: none;
+            color: white;
+            font-size: 20px;
+          }
         }
         .right {
           text-align: center;
           padding: 75px 0 75px 220px;
+          .CircularProgressbar{
+            width: 80%;
+          }
           .star {
             padding-top: 10px ;
             i {
-              font-size: 1.2rem;
+              font-size: 1.4rem;
             }
           }
         }
@@ -88,7 +97,6 @@
     }
   }
   .cinemal{
-    display: block;
     border: none;
     .nav-item{
       width: 100%;
@@ -120,6 +128,7 @@
   }
   .detail-movie .content .intro-movie .flex{
     display: block;
+    text-align: center;
   }
   .detail-movie .content .intro-movie .flex .center{
     padding: 10px;
@@ -130,4 +139,18 @@
       max-width: 100%;
     }
   }
+  // .cinemal1{
+  //   display: flex;
+  //   justify-content: center;
+  //   justify-items: center;
+  //   list-style-type: none;
+  //   .nav-item{
+  //     width: 60px;
+  //     .nav-link{
+  //       span{
+  //         display: none;
+  //       }
+  //     }
+  //   }
+  // }
 }
