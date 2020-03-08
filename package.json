@@ -2,6 +2,9 @@
   "homepage": "http://gamanhu.github.io/react123phim",
   "name": "react123phim",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.13.1"
+  },
   "private": true,
   "dependencies": {
     "@date-io/date-fns": "^1.3.13",
@@ -19,7 +22,7 @@
     "gh-pages": "^2.2.0",
     "image-exists": "^1.1.0",
     "jquery": "^3.4.1",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "popper.js": "^1.16.0",
     "react": "^16.12.0",
     "react-circular-progressbar": "^2.0.3",

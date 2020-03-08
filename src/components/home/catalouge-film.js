@@ -46,10 +46,11 @@ class CatalougeFilm extends Component {
             slidesPerRow: 4,
             slidesToShow: 1,
         }
+        // console.log(this.state);
         return (
-            <div className="selling-list container">
+            <div className="selling-list container" id="catalouge-film">
                 <PickingFast listMovie={this.props.listMovie} />
-                {/* <TrailerModal open={this.state.openModal} close={this.closeModal}/> */}
+                <TrailerModal open={this.state.openModal} close={this.closeModal}/>
                 <ul className="nav nav-pills">
                     <li className="nav-item">
                         <a className="nav-link active" data-toggle="pill" href="#onSelling">

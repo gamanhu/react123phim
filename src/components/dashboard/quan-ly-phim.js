@@ -124,7 +124,7 @@ function QuanLyPhim(props) {
         });
         return listMovie2.map((movie, index) => {
             return (
-                <TableRow key={index} className={index % 2 != 1 ? `` : classes.colorRow}>
+                <TableRow key={index} className={index % 2 !== 1 ? `` : classes.colorRow}>
                     <TableCell>{movie.maPhim}</TableCell>
                     <TableCell>{movie.tenPhim}</TableCell>
                     <TableCell>{new Date(movie.ngayKhoiChieu).toLocaleDateString()}</TableCell>

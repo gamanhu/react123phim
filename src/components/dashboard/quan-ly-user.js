@@ -150,7 +150,7 @@ function QuanLyUser(props) {
             setTotal(total.length);
             setLoading(true);
         }
-        console.log(props);
+        // console.log(props);
 
     }, [props]);
     const renderTable = (pagination,keyW) => {
@@ -167,7 +167,7 @@ function QuanLyUser(props) {
         if(listUser2 && listUser2.length>0){
             return listUser2.map((user, index) => {
                 return (
-                    <TableRow key={index} className={index%2 != 1?``:classes.colorRow}>
+                    <TableRow key={index} className={index%2 !== 1?``:classes.colorRow}>
                         <TableCell>{user.taiKhoan}</TableCell>
                         <TableCell>{user.hoTen}</TableCell>
                         <TableCell>{user.maLoaiNguoiDung}</TableCell>

@@ -36,7 +36,7 @@ function LoginAdmin(props) {
                 <NavLink to="/">
                     <img className="signin__img" alt="logo-brand" src={logo} />
                 </NavLink>
-                <p>Truy Cập Tài Khoản Để Đặt Vé</p>
+                <p>Truy Cập Tài Khoản Quản Trị Viên</p>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group">
                         <label htmlFor="">Tài Khoản</label>

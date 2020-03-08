@@ -22,7 +22,7 @@ function Movie(props) {
         }
     }
     let { movie } = props;
-    console.log(props);
+    // console.log(props);
     let id = movie.maPhim;
         return (
             <div className="film__item">

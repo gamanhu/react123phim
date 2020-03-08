@@ -75,7 +75,7 @@ function ModalUser(props) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        if(props.listUser){
+        if(props.userEdit){
             props.onEditUser(state);
 
         }else {
@@ -105,7 +105,7 @@ function ModalUser(props) {
             <div className={classes.paperFade}>
                 <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                     <Typography component="h2" variant="h6" color="primary">
-                        {(props.userEdit.maPhim) ? "Cập nhật User" : "Thêm Người Dùng"}
+                        {(props.userEdit) ? "Cập nhật Người Dùng" : "Thêm Người Dùng"}
                     </Typography>
                     {props.userEdit ?
                         <FormControl disabled className={classes.form}>
@@ -141,7 +141,7 @@ function ModalUser(props) {
                         <Input name='hoTen' value={state.hoTen} onChange={handleChange} />
                     </FormControl>
                     <Divider />
-                    <Button type="submit" className={classes.button} variant="contained" color="primary">{props.userEdit ? `Cập Nhật Thông Người Dùng` : `Thêm Người Dùng`}</Button>
+                    <Button type="submit" title="Cap nhat" className={classes.button} variant="contained" color="primary">{props.userEdit ? `Cập Nhật Thông Người Dùng` : `Thêm Người Dùng`}</Button>
                     {props.userEdit ? <Button type="button" onClick={() => handleXoa(state.taiKhoan)} className={classes.btnXoa} variant="contained" color="secondary">Xóa Người Dùng</Button> : ``}
 
                 </form>

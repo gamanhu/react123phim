@@ -18,9 +18,10 @@
                 padding-left: 0;
                 transform: translateX(-50%);
                 @media screen and  (max-width: 768px) {
-                    text-align: center;
-                    width: 100%;
-                    transform: translateX(0%);
+                    // text-align: center;
+                    // width: 100%;
+                    // transform: translateX(0%);
+                    display:none;
                 } 
                 .nav-item{
                     white-space: nowrap;

@@ -5,14 +5,15 @@ import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import * as action from "../../redux/actions/index";
 import "react-circular-progressbar/dist/styles.css";
 import DetailShowtime from "./detail-showtime";
-
 import $ from "jquery";
+
 import { exists } from "fs";
 class DetailMovie extends Component {
   componentDidMount() {
     $(document).ready(function() {
       $(this).scrollTop(0);
     });
+
     let id = this.props.match.params.id;
     this.props.gettimeMovie(id);
     this.props.getListLogo();
@@ -389,6 +390,7 @@ class DetailMovie extends Component {
                     <iframe
                       width={370}
                       height={345}
+                      title="trailerMovie"
                       // sau /com phai co cum tu embed/ bo watchv=?
                       src={this.makeUrlEmeb(movie.trailer)}
                     ></iframe>
