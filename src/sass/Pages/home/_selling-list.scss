@@ -15,13 +15,13 @@
     background-color: #fff;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    z-index: 1300;
     .selectPhim {
       width: 30%;
       float: left;
       height: 100%;
       position: relative;
       .selectMenu {
-        // display:none;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
@@ -31,7 +31,6 @@
         color: #000;
         cursor: pointer;
         width: 100%;
-        // height: 30vh;
         padding: 7%;
         background-image: url("./dropdown-icon.png");
         background-repeat: no-repeat;
@@ -52,9 +51,6 @@
           border-right: 1px solid #fff;
           border-right-color: rgba(238, 238, 238, 0.88);
         }
-        // .selectScroll{
-        //     display: none;
-        // }
       }
       .selectScroll {
         display: none;
@@ -62,11 +58,10 @@
         padding: 5px 0;
         margin: 2px 0 0;
         border: 1px solid groove;
-        bottom: 75%;
-        background-color: white;
+        top: 75%;
         max-height: 300px;
         overflow-y: scroll;
-        z-index: 9000 !important;
+        z-index: 1000 !important;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
         background-clip: padding-box;
         border: 1px solid rgba(0, 0, 0, 0.15);
@@ -83,7 +78,6 @@
           border-radius: 5px;
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           background-color: #949191;
-          // border: 1px solid #000;
         }
 
         &.active {
@@ -94,8 +88,6 @@
           background-color: #fff;
           transition: all 0.2s;
           cursor: pointer;
-          
-        z-index: 1000 !important;
           &:hover {
             background-color: #60c5ef;
             color: #fff;
@@ -145,11 +137,11 @@
         padding: 5px 0;
         margin: 2px 0 0;
         border: 1px solid groove;
-        bottom: 75%;
+        top: 75%;
         background-color: white;
         max-height: 300px;
         overflow-y: scroll;
-        z-index: 9000 !important;
+        z-index: 1000 !important;
         box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
         background-clip: padding-box;
         border: 1px solid rgba(0, 0, 0, 0.15);
@@ -166,7 +158,6 @@
           border-radius: 5px;
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           background-color: #949191;
-          // border: 1px solid #000;
         }
 
         &.active {
@@ -177,8 +168,6 @@
           background-color: #fff;
           transition: all 0.2s;
           cursor: pointer;
-          z-index: 9000 !important;
-        // z-index: 1000 !important;
           &:hover {
             background-color: #60c5ef;
             color: #fff;
@@ -228,7 +217,7 @@
         padding: 5px 0;
         margin: 2px 0 0;
         border: 1px solid groove;
-        bottom: 75%;
+        top: 75%;
         background-color: white;
         max-height: 300px;
         overflow-y: scroll;
@@ -249,7 +238,6 @@
           border-radius: 5px;
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           background-color: #949191;
-          // border: 1px solid #000;
         }
 
         &.active {
@@ -260,8 +248,6 @@
           background-color: #fff;
           transition: all 0.2s;
           cursor: pointer;
-          
-        z-index: 1000 !important;
           &:hover {
             background-color: #60c5ef;
             color: #fff;
@@ -294,8 +280,6 @@
         padding-right: 20px;
         -webkit-appearance: none;
         outline: none;
-        // height: 200px;
-        // overflow-y: scroll;
         &::before {
           content: "";
           position: absolute;
@@ -313,7 +297,7 @@
         padding: 5px 0;
         margin: 2px 0 0;
         border: 1px solid groove;
-        bottom: 75%;
+        top: 75%;
         background-color: white;
         max-height: 300px;
         overflow-y: scroll;
@@ -334,7 +318,6 @@
           border-radius: 5px;
           box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
           background-color: #949191;
-          // border: 1px solid #000;
         }
 
         &.active {
@@ -345,8 +328,6 @@
           background-color: #fff;
           transition: all 0.2s;
           cursor: pointer;
-          
-          z-index: 1000 !important;
           &:hover {
             background-color: #60c5ef;
             color: #fff;
@@ -402,8 +383,10 @@
       }
     }
   }
-  .tab-content {
-    #comingSoon.tab-pane {
+  .carousel-phim__content {
+    margin: 0 auto;
+    width: 890px;
+    #comingSoon.carousel-phim__pane {
       position: relative;
       .carousel-inner {
         transform: translateY(30%);
@@ -460,15 +443,14 @@
     }
     #onSelling.tab-pane {
       .slick-slider {
-        // -webkit-user-select: none;
-        // -moz-user-select: none;
-        // -ms-user-select: none;
-        position: relative;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
         user-select: none!important;
-        // z-index:-1;
-        // transform: none !important;
+        position: relative;
         -webkit-tap-highlight-color: transparent;
         touch-action: pan-y;
+        
       }
       .carousel-film {
         transform: translateY(30%);
@@ -478,16 +460,20 @@
         // align-items: center;
         // text-align: center;
         .slick-list {
-          // -webkit-transform: none !important;
-          // -moz-transform: none !important;
-          // -ms-transform: none !important;
-          // -o-transform: none !important;
-          // transform: none !important;
-          .slick-track {
-            position: relative;
+          -webkit-transform: none !important;
+          -moz-transform: none !important;
+          -ms-transform: none !important;
+          -o-transform: none !important;
+          transform: none !important;
+          position: relative;
             top: 0;
             left: 0;
-            display: block;
+            display: block;     
+          &.draggable{
+            user-select: none;
+          }
+          .slick-track {
+            // transform: none !important;
           // z-index: -1000;
           }
         }

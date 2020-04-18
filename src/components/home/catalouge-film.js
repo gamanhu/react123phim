@@ -45,6 +45,34 @@ class CatalougeFilm extends Component {
             rows: 2,
             slidesPerRow: 4,
             slidesToShow: 1,
+            responsive:[
+
+                // {
+                //    breakpoint: 992,
+                //    settings: {
+                //     rows: 2,
+                //     slidesPerRow: 3,
+                //     slidesToScroll: 1,
+                //     slidesToShow: 1,
+                //    }
+                //  },
+                //  {
+                //    breakpoint: 600,
+                //    settings: {
+                //     rows: 2,
+                //     slidesToShow: 2,
+                //     slidesToScroll: 1,
+                //    }
+                //  },
+                //  {
+                //    breakpoint: 480,
+                //    settings: {
+                //     rows: 2,
+                //     slidesToShow: 2,
+                //     slidesToScroll: 1,
+                //    }
+                //  }
+            ]
         }
         // console.log(this.state);
         return (
@@ -64,14 +92,14 @@ class CatalougeFilm extends Component {
                     </li>
                 </ul>
                 {/* Tab panes */}
-                <div className="tab-content">
+                <div className="carousel-phim__content tab-content">
                     {/* // dang chieu list */}
-                    <div className="tab-pane container active" id="onSelling">
+                    <div className="carousel-phim__pane tab-pane container active" id="onSelling">
                         <Slider {...settings} className="carousel-film" style={{"transform":"none!important"}}>
                             {this.renderHTML()}
                         </Slider>
                     </div>
-                    <div className="tab-pane container fade" id="comingSoon">
+                    <div className="carousel-phim__pane tab-pane container fade" id="comingSoon">
                         <div id="comingSoonList" className="carousel slide" data-ride="carousel">
                             {/* Indicators */}
                             <ul className="carousel-indicators">

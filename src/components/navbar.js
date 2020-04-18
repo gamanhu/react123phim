@@ -154,7 +154,7 @@ function Navbar(props) {
                                 </a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="#listbranch">
+                                <a className="nav-link" href="#listBrands">
                                     Cụm Rạp
                                 </a>
                             </li>

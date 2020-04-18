@@ -67,7 +67,7 @@ function QuanLyLichChieu(props) {
         if (mm < 10) {
             mm = '0' + mm;
         }
-        let out = dd + '/' + mm + '/' + yyyy;
+        let out = dd + '/' + mm + '/' + yyyy + ' 00:00:00';
         return out
     }
     const handleChange = (e) => {
