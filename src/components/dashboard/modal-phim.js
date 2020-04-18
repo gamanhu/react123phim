@@ -29,7 +29,6 @@ const useStyles = makeStyles(theme => ({
     },
     form: {
         marginBottom: theme.spacing(2),
-        // marginLeft: theme.spacing(2),
         marginRight: theme.spacing(2)
     },
     button: {
@@ -38,7 +37,6 @@ const useStyles = makeStyles(theme => ({
     btnXoa: {
         marginTop: theme.spacing(2),
         marginLeft: theme.spacing(2),
-        // flexGrow:'1'
     }
 }))
 
@@ -78,7 +76,7 @@ function ModalPhim(props) {
     const FormatDate = (date) => {
         let today = new Date(date);
         let dd = today.getDate();
-        let mm = today.getMonth() + 1; //January is 0!
+        let mm = today.getMonth() + 1;
 
         let yyyy = today.getFullYear();
         if (dd < 10) {
@@ -111,7 +109,6 @@ function ModalPhim(props) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(state);
         if (props.movieEdit) {
             state.ngayKhoiChieu = FormatDate(state.ngayKhoiChieu);
             props.onEditPhim(state);
@@ -132,11 +129,7 @@ function ModalPhim(props) {
             aria-describedby="transition-modal-description"
             open={props.open}
             onClose={props.close}
-            // BackdropComponent={Backdrop}
             className={classes.modal}
-        // BackdropProps={{
-        //     timeout: 500,
-        // }}
 
         >
             {/* <ModalPhim/> */}

@@ -12,9 +12,6 @@ function PickingFast(props) {
         onOpenRap: false,
         ngayChieuPhim: '',
         onOpenNgay: false,
-        // filterSuatChieu: [],
-        // suatChieu: '',
-        // onOpenSuat: false
     });
     const [listSuatChieu, setListSuatChieu] = useState([])
     const [openSuatChieu, setOpenSuatChieu] = useState(false)
@@ -56,11 +53,10 @@ function PickingFast(props) {
             ...state,
             Phim: tenPhim,
             onOpenPhim: false,
-            onOpenRap:true,
+            onOpenRap: true,
         });
     };
     const renderPhim = (listMovie) => {
-        // console.log(props.listMovie);
         if (listMovie && listMovie.length > 0) {
             return props.listMovie.map((movie, index) => {
                 return (
@@ -72,42 +68,48 @@ function PickingFast(props) {
 
         }
     }
-    const chonRap = (tenCumRap,indexLichChieu) => {
+    const chonRap = (tenCumRap, indexLichChieu) => {
         let lichChieuPhim = props.lichChieuPhim[indexLichChieu];
-        // console.log(lichChieuPhim);
         setState({
             ...state,
-            filterLichChieu:lichChieuPhim[0],
+            filterLichChieu: lichChieuPhim[0],
             rapPhim: tenCumRap,
-            onOpenRap:false,
-            onOpenNgay:true,
-        }) 
-        // console.log(state);
+            onOpenRap: false,
+            onOpenNgay: true,
+        })
     };
     const renderRap = (branchHaveMovie) => {
-        if (branchHaveMovie && branchHaveMovie.length > 0) {
-            return branchHaveMovie.map((item) => item.map((rap,index)=>{
-                return (
-                    <li 
-                    key={index} 
-                    className="item-rap" 
-                    onClick={() => { 
-                        chonRap(rap.tenCumRap,index)
-                    }}
-                    >
-                        {rap.tenCumRap}
-                    </li>
-                )
+        if (state.Phim !== '') {
+            if (branchHaveMovie && branchHaveMovie.length > 0) {
+                return branchHaveMovie.map((item) => item.map((rap, index) => {
+                    return (
+                        <li
+                            key={index}
+                            className="item-rap"
+                            onClick={() => {
+                                chonRap(rap.tenCumRap, index)
+                            }}
+                        >
+                            {rap.tenCumRap}
+                        </li>
+                    )
+                }))
+            }
+        } else {
+            return (
+                <li
 
-            }) 
+                    className="item-rap"
+                >
+                    Mời bạn chọn Phim trước
+                </li>
             )
         }
     };
     const FormatDate = (date) => {
         let today = new Date(date);
         let dd = today.getDate();
-        let mm = today.getMonth() + 1; //January is 0!
-
+        let mm = today.getMonth() + 1;
         let yyyy = today.getFullYear();
         if (dd < 10) {
             dd = '0' + dd;
@@ -118,8 +120,8 @@ function PickingFast(props) {
         let out = dd + '/' + mm + '/' + yyyy;
         return out
     };
-    const pickNgay = (date,dateUnFormatted,lichChieu) => {
-        let filterSuat = lichChieu.filter(item=>(new Date(item.ngayChieuGioChieu).toLocaleDateString())===dateUnFormatted)
+    const pickNgay = (date, dateUnFormatted, lichChieu) => {
+        let filterSuat = lichChieu.filter(item => (new Date(item.ngayChieuGioChieu).toLocaleDateString()) === dateUnFormatted)
         console.log(lichChieu);
         console.log(filterSuat);
         setListSuatChieu(filterSuat);
@@ -127,48 +129,90 @@ function PickingFast(props) {
         setNgayChieu(date);
         setState({
             ...state,
-            // filterSuatChieu: filterSuat,
-            // ngayChieuPhim: date,
-            onOpenNgay:false,
-            // onOpenSuat:true
-        }, console.log(123)) 
-
-        // console.log(state);
+            onOpenNgay: false,
+        }, console.log(123))
     };
-    React.useEffect(()=>{console.log(state)},[state.filterSuatChieu,state.onOpenNgay])
-    const renderNgay = (lichChieuPhim) => {
-        if(lichChieuPhim && lichChieuPhim.length>0){
-            // console.log(lichChieuPhim);
-            let datetime = lichChieuPhim.map(item => {
-                return new Date(item.ngayChieuGioChieu).toLocaleDateString()
-            });
-            let dateList = datetime.filter((a, b) => datetime.indexOf(a) === b)
-            return dateList.map((item,index)=>{
-                let date = FormatDate(new Date(item))
-                return (
-                <li 
-                key={index}
-                className="item-ngay"
-                onClick = {()=>{
-                    pickNgay(date,item,lichChieuPhim)
-                }}
-                >Ngày {date}
-                </li>
-                )
-            })
+    React.useEffect(() => { console.log(state) }, [state.filterSuatChieu, state.onOpenNgay]);
 
+    const renderNgay = (lichChieuPhim) => {
+        if (state.Phim === '') {
+            return (
+                <li
+                    className="item-ngay"
+                >
+                    Chọn Phim trước
+                </li>
+            )
+        } else if (state.rapPhim === '') {
+            return (
+                <li
+                    className="item-ngay"
+                >
+                    Chọn Rạp trước
+                </li>
+            )
+
+        } else {
+
+            if (lichChieuPhim && lichChieuPhim.length > 0) {
+                let datetime = lichChieuPhim.map(item => {
+                    return new Date(item.ngayChieuGioChieu).toLocaleDateString()
+                });
+                let dateList = datetime.filter((a, b) => datetime.indexOf(a) === b)
+                return dateList.map((item, index) => {
+                    let date = FormatDate(new Date(item))
+                    return (
+                        <li
+                            key={index}
+                            className="item-ngay"
+                            onClick={() => {
+                                pickNgay(date, item, lichChieuPhim)
+                            }}
+                        >Ngày {date}
+                        </li>
+                    )
+                })
+
+            }
         }
     };
     const renderSuatChieu = (filterSuatChieu) => {
-        if(filterSuatChieu && filterSuatChieu.length>0){
-            return filterSuatChieu.map((item,index)=>{
-                return (
-                <li 
-                key={index}
-                onClick={()=> {chonSuatChieu(item.maLichChieu,item.ngayChieuGioChieu)}}
-                >{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</li>
-                )
-            })
+        if (state.Phim === '') {
+            return (
+                <li
+                    className="item-ngay"
+                >
+                    Chọn Phim trước
+                </li>
+            )
+        } else if (state.rapPhim === '') {
+            return (
+                <li
+                    className="item-ngay"
+                >
+                    Chọn Rạp trước
+                </li>
+            )
+
+        } else if (ngayChieu === '' ) {
+            return (
+                <li
+                    className="item-ngay"
+                >
+                    Chọn Ngày trước
+                </li>
+            )
+        } else {
+            if (filterSuatChieu && filterSuatChieu.length > 0) {
+                return filterSuatChieu.map((item, index) => {
+                    return (
+                        <li
+                            key={index}
+                            onClick={() => { chonSuatChieu(item.maLichChieu, item.ngayChieuGioChieu) }}
+                        >{new Date(item.ngayChieuGioChieu).toLocaleTimeString()}</li>
+                    )
+                })
+            }
         }
     };
     const chonSuatChieu = (maLichChieu, ngayChieuGioChieu) => {
@@ -176,9 +220,7 @@ function PickingFast(props) {
             maLichChieu: Number(maLichChieu),
             suatChieu: (new Date(ngayChieuGioChieu).toLocaleTimeString())
         })
-    }
-    // console.log(props.listMovie);
-    // console.log(state);
+    };
     return (
         <div className="selling-fast">
             {/* Chon Phim */}
@@ -188,6 +230,7 @@ function PickingFast(props) {
                 </div>
                 <ul
                     className={`selectScroll ${state.onOpenPhim ? "active" : ""}`}
+                    style={{ zIndex: 1300 }}
                 >
                     {renderPhim(props.listMovie)}
                 </ul>
@@ -207,7 +250,9 @@ function PickingFast(props) {
                 <div className="selectMenu">
                     {(ngayChieu) ? `${ngayChieu}` : "Ngày xem"}
                 </div>
-                <ul className={`selectScroll ${state.onOpenNgay ? "active" : ""}`}>
+                <ul className={`selectScroll ${state.onOpenNgay ? "active" : ""}`}
+                    style={{ zIndex: 1300 }}
+                >
                     {renderNgay(state.filterLichChieu)}
                 </ul>
             </div>
@@ -221,11 +266,11 @@ function PickingFast(props) {
                 </ul>
             </div>
             <div className="buyFast">
-                {suatChieuPicked.maLichChieu?
-                <NavLink to={`/booking/${suatChieuPicked.maLichChieu}`}><button className="btn btn-primary active">MUA VÉ NGAY</button></NavLink> : 
-                <button disabled className="btn btn-primary">MUA VÉ NGAY</button>    
-            }
-                
+                {suatChieuPicked.maLichChieu ?
+                    <NavLink to={`/booking/${suatChieuPicked.maLichChieu}`}><button className="btn btn-primary active">MUA VÉ NGAY</button></NavLink> :
+                    <button disabled className="btn btn-primary">MUA VÉ NGAY</button>
+                }
+
             </div>
         </div>
     )

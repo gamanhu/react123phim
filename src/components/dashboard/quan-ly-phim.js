@@ -89,6 +89,8 @@ function QuanLyPhim(props) {
         onOpen: false,
         onEdit: {},
     });
+    const [imageToUpload, setImageToUpload] = React.useState('');
+    const [movieImageToUpload, setMovieImageToUpload] = React.useState([]);
     const handleOpen = (movie = false) => {
         setOpen({
             ...open,
@@ -106,6 +108,7 @@ function QuanLyPhim(props) {
     };
     const handleInputOpen = (movie) => {
         setInputOpen(true);
+        setMovieImageToUpload(movie);
     }
     const handleInputClose = () => {
         setInputOpen(false);
@@ -147,18 +150,39 @@ function QuanLyPhim(props) {
     const handleSubmit = (e) => {
         e.preventDefault(); console.log(e);
     }
+    // function uploadFile() {
+    //     var blobFile = $('#filechooser').files[0];
+    //     var formData = new FormData();
+    //     formData.append("fileToUpload", blobFile);
+    
+    //     $.ajax({
+    //        url: "upload.php",
+    //        type: "POST",
+    //        data: formData,
+    //        processData: false,
+    //        contentType: false,
+    //        success: function(response) {
+    //            // .. do something
+    //        },
+    //        error: function(jqXHR, textStatus, errorMessage) {
+    //            console.log(errorMessage); // Optional
+    //        }
+    //     });
+    // }
     const handleImgChange = e => {
         console.log(e);
         let preview = document.querySelector('#preview');
         let files = document.querySelector('input[type=file]').files;
-        console.log(files);
-        const file = new Blob([files[0]],{type:'image/*'});
+        // console.log(files[0].name);
+        const file = new Blob([files[0]],{type:'image/jpeg'});
+        // console.log(file.filename);
         let formData = new FormData();
-        formData.append('image',file,file.filename);
-        console.log(formData)
-        props.updateImg(2194,formData);
-        function readAndPreview(file) {
+        formData.append('File',file,'jpeg');
+        formData.append('tenPhim',movieImageToUpload.tenPhim);
+        formData.append('maNhom',movieImageToUpload.maNhom);
+        setImageToUpload(formData);
 
+        function readAndPreview(file) {
             // Make sure `file.name` matches our extensions criteria
             if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
                 var reader = new FileReader();
@@ -175,11 +199,32 @@ function QuanLyPhim(props) {
             }
 
         }
-        
-
         if (files) {
             [].forEach.call(files, readAndPreview);
         }
+    }
+    const FormatDate = (date) => {
+        let today = new Date(date);
+        let dd = today.getDate();
+        let mm = today.getMonth() + 1;
+
+        let yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        let out = dd + '-' + mm + '-' + yyyy;
+        return out
+    };
+    const handleUploadImage = (e) => {
+        e.preventDefault();
+        props.updateImg(movieImageToUpload.maPhim,imageToUpload);
+        const tenfile = movieImageToUpload.tenPhim.replace(/\s+/g, '-').toLowerCase();
+        movieImageToUpload.hinhAnh = `http://movie0706.cybersoft.edu.vn/hinhanh/${tenfile}_gp01.jpeg`;
+        movieImageToUpload.ngayKhoiChieu = FormatDate(movieImageToUpload.ngayKhoiChieu);
+        props.onEditPhim(movieImageToUpload);
     }
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight, classes.scrollBar);
     return (
@@ -199,8 +244,7 @@ function QuanLyPhim(props) {
                     <form noValidate autoComplete="off" onSubmit={handleSubmit}>
                         <input type='file' onChange={handleImgChange} />
                         <div id="preview"></div>
-                        <Button type="submit">Nop</Button>
-
+                        <Button type="submit" onClick={handleUploadImage}>Nop</Button>
                     </form>
                 </div>
             </Modal>
@@ -244,7 +288,10 @@ const mapDispatchToProps = dispatch => {
         },
         updateImg: (maPhim,data)=>{
             dispatch(action.actUpdateImgAPI(maPhim,data));
-        }
+        },
+        onEditPhim: (data) => {
+            dispatch(action.actOnEditPhimAPI(data))
+        },
     }
 }
 const mapStateToProps = state => {

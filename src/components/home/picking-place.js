@@ -4,35 +4,14 @@ import * as action from "../../redux/actions";
 // import CinemaBranch from "./cinemaBranch";
 import SuatChieu from "./suatchieu";
 class PickingPlace extends Component {
-    // constructor(props){
-    //     super(props);
-    //     this.state = {
-    //         brandLogo: ''
-    //     }
-    // }
+
     componentDidMount() {
-        // Get API LaythongtinHeThongRap (BHD,CGV,CineStar,...)
         this.props.getListCinemaBrand();
-        // Get API LaythongtinCUmRaptheoHeThong (BHD 3/2,BHD Tower,...)
         this.props.getListBranch("BHDStar");
-        // Get API Laythongtinlichchieutheohethongrap
         this.props.getListMovieBrand("BHDStar", "GP01");
 
     }
-
-    // renderBranch = (listBranch, brandName, listMovieBrand) => {
-    //     if (listBranch && listBranch.length > 0) {
-    //         return <CinemaBranch
-    //             listBranch={listBranch}
-    //             brandName={brandName}
-    //             listMovieBrand={listMovieBrand}
-    //         />
-    //     }
-    // }
     renderCinemaBrand = listCinemaBrand => {
-        // Render the List of Cinema Brand: CGV, BHD, CineStar, Galaxy, etc...
-        // Nav of bootstrap
-        // Content of Nav is
         
         if (listCinemaBrand && listCinemaBrand.length > 0) {
             return listCinemaBrand.map((item, index) => {
@@ -86,9 +65,6 @@ class PickingPlace extends Component {
     }
     renderListFilm = (listMovieBrand, listBranchHaveMovie) => {
 
-        // console.log(listBranchHaveMovie);
-        // console.log(listMovieBrand);
-
         if (listBranchHaveMovie && listBranchHaveMovie.length > 0) {
             return this.props.listBranch.map((item, index) => {
                 if (listBranchHaveMovie.includes(item.maCumRap)) {
@@ -97,39 +73,22 @@ class PickingPlace extends Component {
                     return <SuatChieu
                         key={index}
                         isData={true}
-                        // listBranchHaveMovie={listBranchHaveMovie}
                         danhSachPhim = {danhSachPhim}
                         active={(index === 0 ? true : false)}
                         maCumRap={item.maCumRap}
-                        // logo = {this.state.brandLogo}
-                        // listMovieBrand={listMovieBrand}
                     />
 
                 } else {
                     return <SuatChieu
                         key={index}
                         isData={false}
-                        // listBranchHaveMovie={listBranchHaveMovie}
-                        
                         active={(index === 0 ? true : false)}
                         maCumRap={item.maCumRap}
-                        // listMovieBrand={listMovieBrand}
                     />
                 }
 
             })
         }
-        // return listMovieBrand.map((item, index) => {
-        //     console.log(item);
-        //     return item.lstCumRap.map((item2, index2) => {
-        //         console.log(item2);
-        //         return (
-        //             <SuatChieu key={index2} listBranch={listBranch} rapCoPhim={item2.maCumRap} listMovie={item2.danhSachPhim} />
-        //         )
-
-
-        //     })
-        // })
     }
 
     render() {
@@ -138,9 +97,8 @@ class PickingPlace extends Component {
                 <ul className="nav nav-pills container justify-content-center" id="listBrands">
                     {this.renderCinemaBrand(this.props.listCinemaBrand)}
                 </ul>
-                <div className="tab-content">
-                    <div className="tab-pane container fade active show " id={`${this.props.brandName}`}>
-                        {/* <div className="advertisment" width="10%"></div> */}
+                <div className="movie-branch tab-content">
+                    <div className="movie-branch__wrapper tab-pane container fade active show " id={`${this.props.brandName}`}>
                         <ul className=" nav nav-pills list-cinemas" id="listBranches">
                             {this.renderHTMLBranch(this.props.listBranch)}
                         </ul>

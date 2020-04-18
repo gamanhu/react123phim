@@ -3,11 +3,9 @@
         .slide{
             position: relative;
             .carousel-indicators{
-                // position: absolute;
                 bottom: 10%;
-                // left: 50%;
-                // transform: translateX(-50%);
                 li {
+                    z-index: 10!important;
                     width: 12px;
                     height: 12px;
                     border-radius: 50%;
